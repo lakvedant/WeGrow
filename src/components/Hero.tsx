@@ -1,6 +1,5 @@
 "use client";
 import WordRotate from "@/components/magicui/word-rotate";
-import { ConfettiButton } from "./magicui/confetti";
 import Button from "./Button";
 import Link from "next/link";
 import Image from "next/image";
