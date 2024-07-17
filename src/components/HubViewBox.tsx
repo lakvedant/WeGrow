@@ -32,20 +32,20 @@ import Image from "next/image"
 
 export function HubViewBox() {
   return (
-    <Card className="w-[375px] h-[300px] bg-gray-100 mr-8">
-      <CardHeader className="inline-block">
-        <div className="inline-block mr-20">
-            <CardTitle>Hub Name</CardTitle>
-            <CardDescription>Hub Description</CardDescription>
+    <Card className="w-[375px] h-[300px] bg-gray-100 relative ">
+      <CardHeader className="inline-block relative  p-2">
+        <div className="inline-block ml-6  top-0">
+            <CardTitle className="=mt-7">Hub Name</CardTitle>
         </div>
-        <div className="inline-block">
+        <div className="inline-block relative ml-32 pt-2">
             <Image src='/group.png' alt='group' width={60} height={60} />
         </div>
       </CardHeader>
-      <CardFooter className="flex justify-center items-center pb-0.5 top-10">
+      <p className="px-6">Lorem ipsum, dolor sit amosuatur rerum consequuntur officia!</p>
+      <CardFooter className="flex justify-center items-center pb-0.5 absolute bottom-4 ml-3">
         <div className="">
             <Button asChild>
-            <Link href="/hub/hub_name" className="bg-blue-50 text-blue-100 mr-6">Know More</Link>
+            <Link href="/hub/hub_name" className="bg-blue-50 text-blue-100 mr-16">Know More</Link>
             </Button>
             <Dialog>
                 <DialogTrigger asChild>

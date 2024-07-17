@@ -11,7 +11,7 @@ const Navbar = () => {
   const { userId } = auth();
 
   return (
-    <nav className="flexBetween max-container padding-container z-30 py-5 sticky">
+    <nav className="flexBetween max-container padding-container z-30 py-5 sticky top-0">
         <Link href="/" className="relative right-6 sm:pl-4 ">
           <Image src="/logo-black.png" alt="logo" width={274} height={74} />
         </Link>

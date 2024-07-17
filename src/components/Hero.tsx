@@ -33,7 +33,7 @@ const Hero = () => {
                     title="Lets Get Started"
                     variant="btn_dark_blue"
                     />
-                </Link>
+                 </Link> 
             </div>
         </>
     )

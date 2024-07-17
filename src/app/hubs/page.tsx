@@ -4,7 +4,7 @@ import React from 'react'
 
 const Hubs = () => {
   return (
-    <div className='flex items-center top-40 relative mx-28'>
+    <div className='flex items-center top-40 relative justify-center space-x-16'>
       <HubViewBox /><HubViewBox /><HubViewBox />
 
     </div>
