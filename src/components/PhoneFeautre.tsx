@@ -20,7 +20,7 @@ const PhoneFeautre = () => {
       height={800}
       className='ml-28 moveUpDown'
       />
-      <div className='ml-28 mt-10 relative'>
+      <div className='ml-28 mt-16 relative'>
           <div className='pl-10'>
             <GradualSpacing
               className="text-left font-display text-4xl font-bold tracking-[-0.1em]  text-blue-50 dark:text-blue-50 md:text-7xl md:leading-[5rem]"
