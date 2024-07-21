@@ -112,13 +112,21 @@ body {
     @apply  bg-blue-50 px-8 py-4 text-blue-100 transition-all hover:bg-blue-20 hover:text-blue-100
   }
   .btn_dark_blue { 
-    @apply  bg-blue-100 px-8 py-4 text-white transition-all text-7xl
+    @apply  bg-blue-100 px-8 py-4 text-white transition-all text-xl
   }
   .worksButton { 
-    @apply  bg-blue-50 px-8 py-4 text-blue-100 transition-all hover:bg-blue-20 hover:text-blue-100 w-80 h-24 text-4xl
+    @apply  bg-blue-50 px-8 py-4 text-black transition-all hover:bg-blue-20 hover:text-blue-100 w-80 h-24 text-2xl 
   }
   .btn_dark_green_outline  { 
     @apply border-gray-20 bg-green-90 px-8 py-5 text-white
+  }
+
+  .border-purplish-blue {
+    @apply border-2 border-[#601EF9]
+  }
+
+  .bg-magnolia {
+    @apply bg-[#f8f4ff]
   }
   
   .max-container {
@@ -250,7 +258,7 @@ body {
 
 @keyframes bounce {
   0%, 100% {
-    transform: translateY(-0.5%);
+    transform: translateY(-0.8%);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
   50% {

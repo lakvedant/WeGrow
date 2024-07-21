@@ -11,9 +11,8 @@ type Props = {
 };
 
 type Inputs = {
-  name: string;
-  email: string;
-  phoneNo: number;
+  hubName: string;
+  hubDescription: string;
 };
 
 export default function PersonalInfo({ nextStep }: Props) {
@@ -43,51 +42,34 @@ export default function PersonalInfo({ nextStep }: Props) {
       >
         <section>
           <div className="mb-5">
-            {errors.name && <span>This field is required</span>}
+            {errors.hubName && <span>This field is required</span>}
             <label
-              htmlFor="name"
+              htmlFor="hubName"
               className="block mb-2 text-sm font-normal text-gray-900 "
             >
-              Name
+              Hub Name
             </label>
             <input
-              {...register("name", { required: true })}
+              {...register("hubName", { required: true })}
               // type="text"
-              id="name"
+              id="hubName"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="Enter your name"
+              placeholder="Enter your hub name"
               required
             />
           </div>
           <div className="mb-5">
             <label
-              htmlFor="email"
+              htmlFor="hubDescription"
               className="block mb-2 text-sm font-normal text-gray-900 "
             >
-              Email Address
+              Hub Description
             </label>
-            {errors.email && <span>This field is required</span>}
+            {errors.hubDescription && <span>This field is required</span>}
             <input
-              {...register("email", {
-                pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-              })}
-              // type="email"
-              id="email"
-              placeholder="Enter you email address"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <label className="block mb-2 text-sm font-normal text-gray-900 ">
-              Phone Number
-            </label>
-            <input
-              {...register("phoneNo", { required: true })}
-              // type="tel"
-              type="number"
-              id="phonenumber"
-              placeholder="Enter you phone number"
+              {...register("hubDescription", { required: true })}
+              id="hubDescription"
+              placeholder="Enter your hub description"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
               required
             />
@@ -95,13 +77,6 @@ export default function PersonalInfo({ nextStep }: Props) {
         </section>
 
         <div className="flex justify-end">
-          {/* <button
-          
-            type="button"
-            className="text-white w-fit  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center"
-          >
-           
-          </button> */}
           <ButtonF>Next Step</ButtonF>
         </div>
       </form>

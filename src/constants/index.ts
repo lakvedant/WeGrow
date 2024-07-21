@@ -86,30 +86,66 @@ export const NAV_LINKS = [
   };
 
 
-  export type billingPlanType = {
-    planType: string;
-    monthlyPrice: number;
-    yearlyPrice: number;
+  export type InvestmentType = {
+    Type: string;
+    AvgReturn: number;
+    Risk: number;
     imgurl: string;
   };
   
-  export const bilingPlans: billingPlanType[] = [
+  export const investType: InvestmentType[] = [
     {
-      planType: "arcade",
-      monthlyPrice: 9,
-      yearlyPrice: 90,
-      imgurl: "/images/icon-arcade.svg"
+      Type: "Forex",
+      AvgReturn: 15,
+      Risk: 85,
+      imgurl: "/forex.png"
     },
     {
-      planType: "advanced",
-      monthlyPrice: 12,
-      yearlyPrice: 120,
-      imgurl: "/images/icon-advanced.svg"
+      Type: "Crypto",
+      AvgReturn: 100,
+      Risk: 95,
+      imgurl: "/cryptocurrency.png"
     },
     {
-      planType: "pro",
-      monthlyPrice: 15,
-      yearlyPrice: 150,
-      imgurl: "/images/icon-pro.svg"
-    }
+      Type: "Mutual Funds",
+      AvgReturn: 8.5,
+      Risk: 40,
+      imgurl: "/venture.png"
+    },
+    {
+      Type: "Stocks",
+      AvgReturn: 11,
+      Risk: 60,
+      imgurl: "/stock.png"
+    },
+    {
+      Type: "Gold",
+      AvgReturn: 6.5,
+      Risk: 30,
+      imgurl: "/gold.png"
+    },
+    {
+      Type: "Real Estate",
+      AvgReturn: 10,
+      Risk: 50,
+      imgurl: "/house.png"
+    },
+    {
+      Type: "Fixed Deposit",
+      AvgReturn: 4,
+      Risk: 10,
+      imgurl: "/givemoney.png"
+    },
+    {
+      Type: "Bonds",
+      AvgReturn: 3.5,
+      Risk: 20,
+      imgurl: "/bond.png"
+    },
+    {
+      Type: "Startups",
+      AvgReturn: 25,
+      Risk: 90,
+      imgurl: "/start-up.png"
+    },
   ];

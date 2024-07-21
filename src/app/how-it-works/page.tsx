@@ -3,11 +3,13 @@ import Button from "@/components/Button"
 import Image from "next/image"
 import Link from "next/link"
 import { Player } from '@lottiefiles/react-lottie-player';
+import { Separator } from "@/components/ui/separator"
+
 
 
 const How_it_works = () => {
   return (
-    <div className="flex w-full md:items-center justify-center p-5  pt-32 md:pt-5">
+    <div className="flex w-full md:items-center ml-20 p-5 md:pt-5 relative">
       <div className='inline-block mr-36'>
         <Player
         src='https://lottie.host/975b8449-4028-4465-a44c-668d1e5fee04/MMTO5QveeG.json'
@@ -17,19 +19,23 @@ const How_it_works = () => {
         speed={0.5} 
         />
       </div>
-      <div className='inline-block bottom-worksButtony left-worksButtonx'>
-        <Link href='/hubs/create-hub' >
-          <Button
-          type="button"
-          title="Create Hub"
-          variant="worksButton" />
-        </Link>
-        <Link href='/hubs'>
-          <Button
-          type="button"
-          title="Join Hub"
-          variant="worksButton" />
-        </Link>
+      <div className='inline-block items-center  '>
+        <div className="mb-20 top-40 absolute">
+          <Link href='/hubs/create-hub' >
+            <Button
+            type="button"
+            title="Create Hub"
+            variant="worksButton" />
+          </Link>
+        </div>
+        <div>
+          <Link href='/hubs'>
+            <Button
+            type="button"
+            title="Join Hub"
+            variant="worksButton" />
+          </Link>
+        </div>
 
       </div>
 

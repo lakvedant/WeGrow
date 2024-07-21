@@ -1,11 +1,15 @@
 /** @format */
-
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import React from "react";
+
+
 
 type Props = {};
 import Image from "next/image";
 
 import thankYouImg from "@/assets/images/icon-thank-you.svg";
+import Link from "next/link";
 
 export default function ThankYou({}: Props) {
   return (
@@ -13,10 +17,12 @@ export default function ThankYou({}: Props) {
       <Image src={thankYouImg} alt="thank-you-img" />
       <h3 className="text-marine-blue">Thank you!</h3>
       <p className="text-gray-400">
-        Thanks for confirming your subscription! We hope you have fun using our
-        platform. If you ever need support, please feel free to email us at
-        support@loremgaming.com.
+        Thanks for making your own hub! We hope you find your group and start your investment journey
+        If you ever need support, please feel free to email us at
+        support@wegrow.com
       </p>
+      <Link
+      href='/'>Home</Link>
     </div>
   );
 }

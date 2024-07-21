@@ -69,8 +69,8 @@ function ProgressStep(props: ProgressStepType) {
       {/* step left */}
       <div
         className={cn(
-          "h-5 w-5 border border-white p-4  rounded-full flex items-center justify-center text-white font-semibold ",
-          { "bg-light-blue text-black  ": props.activeStep === props.step }
+          "h-5 w-5 border border-black p-4  rounded-full flex items-center justify-center text-black font-semibold ",
+          { "bg-blue-100 text-white border-white  ": props.activeStep === props.step }
         )}
       >
         {props.step}

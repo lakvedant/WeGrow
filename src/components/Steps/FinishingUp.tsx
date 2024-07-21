@@ -4,13 +4,11 @@ import React, { useState } from "react";
 import ContentSection from "../Title";
 import ButtonF from "../ButtonF";
 import { SetStateAction, useAtom } from "jotai";
-import {
-  activeAddOnsAtom,
-  billingPlanAtom,
-  selectedPlanAtom
-} from "@/store/store";
 import ThankYou from "./ThankYou";
-
+import {
+    investTypeAtom,
+  } from "@/store/store";
+import InvestmentPlan from "./InvestmentPlan";
 type Props = {
   prevStep: () => void;
   setActiveStep: React.Dispatch<SetStateAction<number>>;
@@ -18,21 +16,8 @@ type Props = {
 
 export default function FinishingUp({ prevStep, setActiveStep }: Props) {
   const [confirm, setConfirm] = useState(false);
-  const [selectedPlan] = useAtom(selectedPlanAtom);
+  const [investPlan] = useAtom(investTypeAtom);
 
-  const [billingPlan] = useAtom(billingPlanAtom);
-  const [activeAddOns] = useAtom(activeAddOnsAtom);
-
-  const totalPerYear =
-    activeAddOns.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.yearly,
-      0
-    ) + billingPlan.yearlyPrice;
-  const totalPerMonth =
-    activeAddOns.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.monthly,
-      0
-    ) + billingPlan.monthlyPrice;
 
   return (
     <>
@@ -53,28 +38,25 @@ export default function FinishingUp({ prevStep, setActiveStep }: Props) {
                   {/*  left*/}
                   <div className=" flex flex-col items-start">
                     <h3 className="font-semibold text-marine-blue">
-                      <span className="capitalize">{billingPlan.planType}</span>
-                      <span className="capitalize">( {selectedPlan})</span>
+                      <span className="capitalize">{investPlan.Type}</span>
                     </h3>
                     <button
-                      onClick={() => setActiveStep(2)}
+                      onClick={() => setActiveStep(3)}
                       className="text-gray-400 text-sm underline hover:opacity-80"
                     >
                       Change
                     </button>
                   </div>
-                  {/* price */}
+                  {/* price
                   <p className="font-bold text-marine-blue">
-                    {selectedPlan === "monthly"
-                      ? `$${billingPlan.monthlyPrice}/mo}`
-                      : `$${billingPlan.yearlyPrice}/yo}`}
-                  </p>
+                      {investPlan.yearlyPrice}
+                  </p> */}
                 </div>
 
                 {/* divider */}
                 <hr />
 
-                <section className="text-sm flex-col flex gap-3">
+                {/* <section className="text-sm flex-col flex gap-3">
                   {activeAddOns.map((d, i) => (
                     <div key={i} className="flex justify-between ">
                       <p className="text-gray-400">{d.addOnsType}</p>
@@ -85,11 +67,11 @@ export default function FinishingUp({ prevStep, setActiveStep }: Props) {
                       </p>
                     </div>
                   ))}
-                </section>
+                </section> */}
               </section>
 
               {/* total price */}
-              <div className="flex justify-between items-center">
+              {/* <div className="flex justify-between items-center">
                 <p className="text-gray-400 text-sm">
                   Total
                   {selectedPlan === "monthly" ? " (per month)" : "(per year)"}
@@ -99,7 +81,7 @@ export default function FinishingUp({ prevStep, setActiveStep }: Props) {
                     ? `$${totalPerMonth}/mo`
                     : `$${totalPerYear}/yo`}
                 </p>
-              </div>
+              </div> */}
             </div>
 
             <section className="flex  mt-2 justify-between rounded-md w-full ">

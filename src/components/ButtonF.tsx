@@ -20,7 +20,7 @@ export default function ButtonF(props: ButtonType) {
           "bg-blue-50": props.variant == "secondary"
         },
         {
-          "bg-white text-gray-400 focus:ring-0": props.variant == "ghost"
+          "bg-white text-gray-400 border-2 focus:ring-0": props.variant == "ghost"
         }
       )}
     />
