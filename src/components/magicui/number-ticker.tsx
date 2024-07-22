@@ -28,7 +28,7 @@ export default function NumberTicker({
     isInView &&
       setTimeout(() => {
         motionValue.set(direction === "down" ? 0 : value);
-      }, delay * 1000);
+      }, delay * 100);
   }, [motionValue, isInView, delay, value, direction]);
 
   useEffect(
@@ -46,7 +46,7 @@ export default function NumberTicker({
   return (
     <span
       className={cn(
-        "inline-block tabular-nums text-black dark:text-white tracking-wider",
+        "inline-block tabular-nums text-black tracking-wider",
         className,
       )}
       ref={ref}

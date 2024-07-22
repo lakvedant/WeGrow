@@ -1,17 +1,15 @@
 import React from 'react'
+import NumberTicker from "@/components/magicui/number-ticker";
 
 const TickNumbers = () => {
   return (
-    <div>
-      <section className='flex justify-center'>
-        <div className='flex items-start'>
-          <p className='p-4'> <b className='text-3xl'>WeGrow Together</b><br /><br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />Quaerat dolore animi dolorum sunt magni fugit enim <br /><br /><br />
-          <span className='text-blue-500 underline'> Learn more about WeGrow </span> </p>
-        </div>
-        <img className='h-25' src="https://c4.wallpaperflare.com/wallpaper/73/176/1014/3-316-16-9-aspect-ratio-s-sfw-wallpaper-preview.jpg"/>
-      </section>
-      <br /><br />
+    <div className='justify-center w-full flex items-center'>
+      <div>
+        <p className='bold-40'>Hubs so far created at Wegrow</p>
+        <p className="whitespace-pre-wrap text-7xl tracking-tighter text-black font-bold mt-4">
+          <NumberTicker value={250} direction='up' />
+        </p>
+      </div>
     </div>
   )
 }

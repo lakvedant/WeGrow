@@ -4,7 +4,7 @@ export const NAV_LINKS = [
     { href: '/how-it-works', key: 'how_it_works', label: 'How It Works' },
     { href: '/about-us', key: 'about_us', label: 'About Us' },
     { href: '/hubs', key: 'hubs', label: 'Hubs' },
-    { href: '/contact-us', key: 'contact_us', label: 'Contact Us' },
+    { href: '/team', key: 'team', label: 'Team' },
   ];
   
   // CAMP SECTION
