@@ -6,6 +6,7 @@ import Button from "./Button"
 import { redirect } from "next/dist/server/api-utils";
 import { UserButton} from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs/server';
+import { ShiftingDropDown } from "./Dropdown";
 
 const Navbar = () => {
   const { userId } = auth();
@@ -21,7 +22,11 @@ const Navbar = () => {
             {link.label}
           </Link>
         ))}
+          <div className=" pb-2">
+          <ShiftingDropDown />
+          </div>
       </ul>
+
       {!userId && (
         <>
           <div className="absolute right-10">

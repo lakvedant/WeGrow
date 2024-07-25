@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, Variants } from "framer-motion";
-
+import { useInView } from "react-intersection-observer";
 import { cn } from "@/lib/utils";
 
 interface GradualSpacingProps {
@@ -22,22 +22,29 @@ export default function GradualSpacing({
   },
   className,
 }: GradualSpacingProps) {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+    delay: 2000
+  });
+
   return (
-    <div className="flex space-x-1.5">
+    <div className="flex space-x-1.5" ref={ref}>
       <AnimatePresence>
-        {text.split("").map((char, i) => (
-          <motion.h1
-            key={i}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={framerProps}
-            transition={{ duration, delay: i * delayMultiple }}
-            className={cn("drop-shadow-sm ", className)}
-          >
-            {char === " " ? <span>&nbsp;</span> : char}
-          </motion.h1>
-        ))}
+        {inView &&
+          text.split("").map((char, i) => (
+            <motion.h1
+              key={i}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={framerProps}
+              transition={{ duration, delay: i * delayMultiple }}
+              className={cn("drop-shadow-sm", className)}
+            >
+              {char === " " ? <span>&nbsp;</span> : char}
+            </motion.h1>
+          ))}
       </AnimatePresence>
     </div>
   );

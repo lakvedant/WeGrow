@@ -1,88 +1,83 @@
 /** @format */
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import ContentSection from "../Title";
 import ButtonF from "../ButtonF";
-
 import { useForm, SubmitHandler } from "react-hook-form";
-type InvestmentPlan = {
-  nextStep: () => void;
-  prevStep: () => void;
-};
 
-type Inputs = {
-  people: Number;
-  m_invest: Number;
-  invest_period: Number;
-};
+interface Step2Props {
+  onBack: () => void;
+  onNext: (data: Inputs) => void;
+}
 
-export default function InvestmentPlan({ nextStep, prevStep }: InvestmentPlan) {
+interface Inputs {
+  people: number;
+  m_invest: number;
+  invest_period: number;
+}
+
+const InvestmentPlan: React.FC<Step2Props> = ({ onBack, onNext }) => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors }
+    formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    nextStep();
+
+  const handleNext: SubmitHandler<Inputs> = (data) => {
+    onNext(data);
   };
 
-  console.log("errors", errors);
-
   return (
-    <div className="flex justify-start flex-col  gap-10 h-full">
+    <div className="flex justify-start flex-col gap-10 h-full">
       <ContentSection
-        title=" Investment Plan "
-        para="  Please provide no. of people, monthly invesment and period"
+        title="Investment Plan"
+        para="Please provide the number of people, monthly investment, and period."
       />
-      {/* {renderStep()} */}
       <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="  h-full flex flex-col justify-between "
+        onSubmit={handleSubmit(handleNext)}
+        className="h-full flex flex-col justify-between"
       >
         <section>
           <div className="mb-5">
             {errors.people && <span>This field is required</span>}
             <label
               htmlFor="people"
-              className="block mb-2 text-sm font-normal text-gray-900 "
+              className="block mb-2 text-sm font-normal text-gray-900"
             >
-              Number of people
+              Number of People
             </label>
             <input
               {...register("people", { required: true })}
-              // type="text"
               id="people"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Enter number of people"
               required
-              type="Number"
+              type="number"
             />
           </div>
           <div className="mb-5">
+            {errors.m_invest && <span>This field is required</span>}
             <label
               htmlFor="m_invest"
-              className="block mb-2 text-sm font-normal text-gray-900 "
+              className="block mb-2 text-sm font-normal text-gray-900"
             >
               Monthly Investment
             </label>
-            {errors.m_invest && <span>This field is required</span>}
             <input
               {...register("m_invest", { required: true })}
               id="m_invest"
               placeholder="Enter monthly investment amount"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               required
-              type="Number"
+              type="number"
             />
           </div>
           <div className="mb-5">
             {errors.invest_period && <span>This field is required</span>}
             <label
               htmlFor="invest_period"
-              className="block mb-2 text-sm font-normal text-gray-900 "
+              className="block mb-2 text-sm font-normal text-gray-900"
             >
               Investment Period
             </label>
@@ -90,19 +85,23 @@ export default function InvestmentPlan({ nextStep, prevStep }: InvestmentPlan) {
               {...register("invest_period", { required: true })}
               id="invest_period"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="Enter Investment Period"
+              placeholder="Enter investment period"
               required
-              type="Number"
+              type="number"
             />
           </div>
         </section>
-        <section className="flex  mt-2 justify-between rounded-md w-full ">
-          <ButtonF variant="ghost" onClick={prevStep}>
+        <div className="flex justify-between mt-2">
+          <ButtonF variant="ghost" type="button" onClick={onBack}>
             Go Back
           </ButtonF>
-          <ButtonF onClick={nextStep}>Next Step</ButtonF>
-        </section>
+          <ButtonF type="submit">
+            Next Step
+          </ButtonF>
+        </div>
       </form>
     </div>
   );
-}
+};
+
+export default InvestmentPlan;

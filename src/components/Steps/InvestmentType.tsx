@@ -2,108 +2,94 @@
 
 "use client";
 
-import checkmarkImge from "@/assets/images/icon-advanced.svg";
-
-import React, { useState } from "react";
-import { IStep } from "@/@types";
-import Image from "next/image";
-import { investType, InvestmentType } from "@/constants";
+import React from "react";
+import { InvestmentType, investType } from "@/constants";
 import ContentSection from "../Title";
-import { cn } from "@/lib/utils";
 import ButtonF from "../ButtonF";
 import { useAtom } from "jotai";
-import { investTypeAtom} from "@/store/store";
+import { investTypeAtom } from "@/store/store";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
-type IPlan = {
-  imageURl: string;
-  title: string;
-  setinvestPlan: React.Dispatch<React.SetStateAction<InvestmentType>>;
-  data: InvestmentType;
-  investPlan: InvestmentType;
-};
+interface Step3Props {
+  onBack: () => void;
+  onNext: (data: InvestmentType) => void;
+}
 
-type SelectPanType = {
-  nextStep: () => void;
-  prevStep: () => void;
-};
+const SelectPlan: React.FC<Step3Props> = ({ onBack, onNext }) => {
+  const [investPlan, setInvestPlan] = useAtom(investTypeAtom);
 
-export default function SelectPan({ nextStep, prevStep }: SelectPanType) {
-  // const [openTab, setOpenTab] = React.useState(1);
-  const [investPlan, setinvestPlan] = useAtom(investTypeAtom);
-
-//   function handleSlectedPlan() {
-//     if (selectedPlan === "monthly") {
-//       setSelectedPlan("yearly");
-//     }
-//     if (selectedPlan === "yearly") {
-//       setSelectedPlan("monthly");
-//     }
-//   }
+  const handleNext = () => {
+    if (investPlan) {
+      onNext(investPlan);
+    }
+  };
 
   return (
     <main className="flex gap-6 flex-col h-full ">
       <ContentSection
-        title=" Select Types of Investments"
-        para=" You have different option of Investments."
+        title="Select Types of Investments"
+        para="You have different options of Investments."
       />
-      <div className=" h-full flex flex-col justify-between ">
+      <div className="h-full flex flex-col justify-between">
         <section className="flex flex-col gap-6">
-          <div className=" flex flex-col md:flex-row gap-5 flex-wrap ">
+          <div className="flex flex-col md:flex-row gap-5 flex-wrap">
             {investType.map((d, i) => (
-              // eslint-disable-next-line react/jsx-key
               <Plan
                 title={d.Type}
                 imageURl={d.imgurl}
                 investPlan={investPlan}
                 data={d}
-                setinvestPlan={setinvestPlan}
+                setInvestPlan={setInvestPlan}
                 key={i}
               />
             ))}
           </div>
-
         </section>
-        {/* step btns */}
-        <section className="flex  mt-2 justify-between rounded-md w-full ">
-          <ButtonF variant="ghost" onClick={prevStep}>
+        <section className="flex mt-2 justify-between rounded-md w-full">
+          <ButtonF variant="ghost" type="button" onClick={onBack}>
             Go Back
           </ButtonF>
-          <ButtonF onClick={nextStep}>Next Step</ButtonF>
+          <ButtonF variant="primary" type="button" onClick={handleNext}>
+            Next Step
+          </ButtonF>
         </section>
       </div>
     </main>
   );
+};
+
+interface PlanProps {
+  imageURl: string;
+  title: string;
+  investPlan: InvestmentType;
+  setInvestPlan: React.Dispatch<React.SetStateAction<InvestmentType>>;
+  data: InvestmentType;
 }
 
-function Plan({
-  imageURl,
-  title,
-  investPlan,
-  setinvestPlan,
-  data
-}: IPlan) {
+const Plan: React.FC<PlanProps> = ({ imageURl, title, investPlan, setInvestPlan, data }) => {
   return (
     <div
-      onClick={() => setinvestPlan(data)}
+      onClick={() => setInvestPlan(data)}
       className={cn(
-        "flex p-2  border  md:flex-col rounded-md gap-3 cursor-pointer w-32 h-24 items-center ",
+        "flex p-2 border md:flex-col rounded-md gap-3 cursor-pointer w-32 h-24 items-center",
         {
-          "border-purplish-blue bg-magnolia ":
-            data.Type === investPlan.Type
+          "border-purplish-blue bg-magnolia": data.Type === investPlan.Type,
         }
       )}
     >
       <Image
         width={100}
         height={100}
-        className="h-10 w-10  "
-        // src="/images/icon-arcade.svg"
+        className="h-10 w-10"
         src={imageURl}
-        alt="notfound"
+        alt={title}
       />
-      <div className="flex  flex-col ">
-        <p className="font-semibold capitalize ">{title}</p>
+      <div className="flex flex-col">
+        <p className="font-semibold capitalize">{title}</p>
       </div>
     </div>
   );
-}
+};
+
+export default SelectPlan;

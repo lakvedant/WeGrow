@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -20,9 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider appearance={{
+      baseTheme: [ neobrutalism],
       variables: { colorPrimary: '#309bdc' },
       signIn: {
-        baseTheme: [ neobrutalism],
         variables: { colorPrimary: '#309bdc' }
       }
     }}>

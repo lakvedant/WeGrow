@@ -1,3 +1,4 @@
+import Faq from "@/components/FAQs";
 import Hero from "@/components/Hero";
 import PhoneFeautre from "@/components/PhoneFeautre";
 import TickNumbers from "@/components/TickNumbers";
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
       <PhoneFeautre />
+      <Faq />
     </>
   );
 }

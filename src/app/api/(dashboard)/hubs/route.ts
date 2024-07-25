@@ -1,93 +1,56 @@
-import { connect } from "@/lib/db";
-import User from "@/lib/models/user.model";
+// src/app/api/hubs/route.ts
+
+import { NextRequest, NextResponse } from 'next/server';
+import { connect } from '@/lib/db'; // Adjust path if necessary
 import Hub from "@/lib/models/hub.model";
-import { NextResponse } from "next/server";
-import { Types } from "mongoose";
+import User from '@/lib/models/user.model';
 
-export const GET = async (request: Request) => {
+// Connect to the database
+connect();
+
+export async function POST(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const userId = searchParams.get("userId");
+    const hubData = await request.json();
+    console.log('Received data:', hubData); // Log received data for debugging
 
-    if (!userId || !Types.ObjectId.isValid(userId)) {
-      return new NextResponse(
-        JSON.stringify({ message: "Invalid or missing userId" }),
-        {
-          status: 400,
-        }
-      );
+    if (!hubData) {
+      return NextResponse.json({ success: false, message: 'No data provided' }, { status: 400 });
     }
 
-    await connect();
-
-    const user = await User.findById(userId);
+    // Find the user by username
+    const user = await User.findOne({ username: hubData.HubOwner });
     if (!user) {
-      return new NextResponse(
-        JSON.stringify({ message: "User not found in the database" }),
-        {
-          status: 400,
-        }
-      );
+      return NextResponse.json({ success: false, message: 'User not found' }, { status: 404 });
     }
 
-    const hubs = await Hub.find({
-      user: new Types.ObjectId(userId),
-    });
-
-    return new NextResponse(JSON.stringify(hubs), {
-      status: 200,
-    });
-  } catch (error: any) {
-    return new NextResponse("Error in fetching categories" + error.message, {
-      status: 500,
-    });
-  }
-};
-
-export const POST = async (request: Request) => {
-  try {
-    const { searchParams } = new URL(request.url);
-    const userId = searchParams.get("userId");
-
-    const { hubName,hubDescription,people, m_invest,invest_period,t_invest }  = await request.json();
-
-
-    if (!userId || !Types.ObjectId.isValid(userId)) {
-      return new NextResponse(
-        JSON.stringify({ message: "Invalid or missing userId" }),
-        {
-          status: 400,
-        }
-      );
-    }
-
-    await connect();
-
-    const user = await User.findById(userId);
-    if (!user) {
-      return new NextResponse(JSON.stringify({ message: "User not found" }), {
-        status: 404,
-      });
-    }
+    // Create the new hub with the user's ObjectId
     const newHub = new Hub({
-        hubName,
-        hubDescription,
-        people,
-        m_invest,
-        invest_period,
-        t_invest,
-        hubOwner: new Types.ObjectId(userId),
+      ...hubData,
+      HubOwner: user._id,
     });
 
-    await newHub.save();
+    const savedHub = await newHub.save();
 
-    return new NextResponse(
-      JSON.stringify({ message: "Hub is created", hub: newHub }),
-      { status: 200 }
-    );
-  } catch (error: any) {
-    return new NextResponse("Error in creating Hub" + error.message, {
-      status: 500,
-    });
+    // Update the user's ownedHubs field
+    user.ownedHubs.push(newHub._id);
+    await user.save();
+
+    return NextResponse.json({ success: true, data: savedHub }, { status: 201 });
+  } catch (error) {
+    console.error('Error saving hub:', error);
+    return NextResponse.json({ success: false, message: 'Error saving hub' }, { status: 500 });
   }
-};
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    // Fetch all hubs from the database
+    const hubs = await Hub.find();
+    
+    // Return the hubs in the response
+    return NextResponse.json({ hubs });
+  } catch (error) {
+    console.error("Error fetching hubs: ", error);
+    return NextResponse.json({ error: 'Failed to fetch hubs' }, { status: 500 });
+  }
+}

@@ -1,28 +1,30 @@
 /** @format */
 
-import { cn } from "@/lib/utils";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 interface ButtonType extends React.HtmlHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "ghost";
+  type: "button" | "submit";
 }
 
-export default function ButtonF(props: ButtonType) {
+const ButtonF: React.FC<ButtonType> = ({ variant = "primary", type, children, className, ...props }) => {
   return (
     <button
-      {...props}
       className={cn(
-        "text-white w-fit  bg-blue-50 hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center",
+        "text-white w-fit bg-blue-500 hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center",
         {
-          "bg-blue-50": props.variant == "primary"
+          "bg-gray-200 text-gray-700": variant === "secondary",
+          "bg-transparent text-gray-400 border-2 border-gray-400": variant === "ghost",
         },
-        {
-          "bg-blue-50": props.variant == "secondary"
-        },
-        {
-          "bg-white text-gray-400 border-2 focus:ring-0": props.variant == "ghost"
-        }
+        className
       )}
-    />
+      type={type}
+      {...props}
+    >
+      {children}
+    </button>
   );
-}
+};
+
+export default ButtonF;
