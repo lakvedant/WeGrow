@@ -222,7 +222,9 @@ body {
     @apply text-[16px] font-[700];
   }
 
-
+  .tradingview-widget-container {
+    height: 630px !important;
+  }
 
   /* Camp */
   .camp-quote {

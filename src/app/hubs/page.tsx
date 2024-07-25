@@ -1,6 +1,7 @@
 'use client';
 import { HubViewBox } from '@/components/HubViewBox';
 import React, { useEffect, useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 
 interface Hub {
   _id: string;
@@ -44,16 +45,17 @@ const HubsPage = () => {
 
   return (
     <div className="items-center justify-center">
-      <div className="mx-auto max-w-xl mt-7 mb-20 px-5">
+      <div className="mx-auto max-w-xl mt-7 mb-20 px-5 relative">
         <input
           type="text"
           placeholder="Search hubs..."
-          className="w-full p-3 border border-gray-300 rounded-lg"
+          className="w-full p-3 pl-11 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <FaSearch className="absolute top-3 left-8 text-gray-500 w-6 h-6" />
       </div>
-        <div className="flex flex-col md:flex-row gap-14 justify-center">
+        <div className="flex flex-col md:flex-row gap-14 justify-center px-6">
             {filteredHubs.map((hub) => (
               <HubViewBox key={hub._id} hub={hub} />
             ))}

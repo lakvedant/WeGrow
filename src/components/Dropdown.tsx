@@ -181,12 +181,21 @@ const Products = () => {
     <div>
       <div className="flex gap-4">
         <div>
-          <h3 className="mb-2 text-sm font-semibold">Startup</h3>
-          <a href="#" className="mb-1 block text-sm text-neutral-800">
-            Bookkeeping
+          <h3 className="mb-2 text-sm font-semibold">Crypto Currency</h3>
+          <a href="/market/crypto/btc" target="_blank" className="mb-1 block text-sm text-neutral-800 hover:text-blue-50">
+            Bitcoin
           </a>
-          <a href="#" className="block text-sm text-neutral-800">
-            Invoicing
+          <a href="/market/crypto/eth" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            Ethereum
+          </a>
+          <a href="/market/crypto/solana" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            Solana
+          </a>
+          <a href="/market/crypto/dogecoin" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            Dogecoin
+          </a>
+          <a href="/market/crypto/all-crypto" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50 hover:underline">
+            View All
           </a>
         </div>
         <div>

@@ -1,5 +1,3 @@
-// src/app/api/hubs/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 import { connect } from '@/lib/db'; // Adjust path if necessary
 import Hub from "@/lib/models/hub.model";
@@ -44,10 +42,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    // Fetch all hubs from the database
     const hubs = await Hub.find();
-    
-    // Return the hubs in the response
     return NextResponse.json({ hubs });
   } catch (error) {
     console.error("Error fetching hubs: ", error);

@@ -38,9 +38,6 @@ const handleSubmit = async () => {
 
     const response = await fetch('/api/hubs', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(formData),
     });
 
@@ -54,6 +51,7 @@ const handleSubmit = async () => {
     console.error('Form submission error:', error);
   }
 };
+
 
 
   function RenderStep() {
