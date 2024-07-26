@@ -64,7 +64,7 @@ function SideNav() {
                     text-black font-semibold
                     mb-3
                     p-4 cursor-pointer rounded-full hover:bg-blue-20
-                    ${path == menu.path && "text-primary bg-blue-50"}
+                    ${path == menu.path && "text-primary bg-blue-20"}
                     `}
             >
               <menu.icon />

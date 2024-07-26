@@ -4,7 +4,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Image from 'next/image';
 import Link from 'next/link';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { useToast } from "@/components/ui/use-toast"
 
+function formatIndianNumber(num: number): string {
+  return num.toLocaleString('en-IN');
+}
 interface HubProps {
   hub: {
     _id: string;
@@ -22,38 +26,34 @@ interface HubProps {
 }
 
 export function HubViewBox({ hub }: HubProps) {
+  const { toast } = useToast()
   return (
-    <Card className="w-[375px] h-[300px] bg-gray-100 relative">
-      <CardHeader className="inline-block relative p-2">
-        <div className="inline-block ml-6 top-0">
-          <CardTitle className="=mt-7">{hub.hubName}</CardTitle>
+    <Card className="w-[375px] h-[270px] bg-gray-100 relative transition-all duration-500 hover:scale-105">
+      <CardHeader className="inline-block w-full p-2 justify-between">
+        <div className="inline-block ">
+          <CardTitle className="absolute p-3 text-2xl top-6 left-4">{hub.hubName}</CardTitle>
         </div>
-        <div className="inline-block relative ml-32 pt-2">
-          <Image src={hub.imgurl || '/group.png'} alt='group' width={60} height={60} />
+        <div className="absolute right-1 inline-block p-1 mr-3 ">
+          <Image src={hub.imgurl || '/group.png'} alt='group' width={70} height={70} />
         </div>
       </CardHeader>
-      <p className="px-6">{hub.hubDescription}</p>
+      <p className="px-7 mt-14">{hub.hubDescription}</p>
+      <h2 className="pl-9 absolute bottom-[74px] font-bold text-primary text-2xl"> ₹{formatIndianNumber(hub.m_invest)}</h2>
       <CardFooter className="flex justify-center items-center pb-0.5 absolute bottom-4 ml-3">
         <div className="">
           <Button asChild>
-            <Link href={`/hub/${hub._id}`} className="bg-blue-50 text-blue-100 mr-16">Know More</Link>
+            <Link href={`/hub/${hub._id}`} className="bg-blue-50 text-blue-100 mr-16 text-semibold">Know More</Link>
           </Button>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="bg-blue-50 text-blue-100">Request to Join</Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Edit profile</DialogTitle>
-                <DialogDescription>
-                  Make changes to your profile here. Click save when done.
-                </DialogDescription>
-              </DialogHeader>
-              <DialogFooter>
-                <Button type="submit">Save changes</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+          <Button
+      onClick={() => {
+        toast({
+          description: "You have joined the hub 🎉.",
+        })
+      }}
+      className="bg-blue-50 text-blue-100 ml-10 text-semibold"
+    >
+      Join Hub
+    </Button>
         </div>
       </CardFooter>
     </Card>

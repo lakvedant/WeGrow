@@ -26,7 +26,7 @@ const Teamdiv = () => {
         width={450}
         height={450}
         alt="ap"
-        className='transition-all duration-500 hover:scale-125 blur-sm hover:blur-md'
+        className='transition-all duration-500 hover:scale-125 '
         />
         
       

@@ -45,21 +45,23 @@ const HubsPage = () => {
 
   return (
     <div className="items-center justify-center">
-      <div className="mx-auto max-w-xl mt-7 mb-20 px-5 relative">
+      <div className="mx-auto max-w-xl mt-12 mb-12 px-5 relative">
         <input
           type="text"
           placeholder="Search hubs..."
-          className="w-full p-3 pl-11 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 pl-11 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-500"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <FaSearch className="absolute top-3 left-8 text-gray-500 w-6 h-6" />
+        <FaSearch className="absolute top-3 left-8 text-gray-400 w-6 h-6" />
       </div>
-        <div className="flex flex-col md:flex-row gap-14 justify-center px-6">
+      <div className='flex justify-center pb-10 '>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 ">
             {filteredHubs.map((hub) => (
               <HubViewBox key={hub._id} hub={hub} />
             ))}
         </div>
+      </div>
     </div>
   );
 };

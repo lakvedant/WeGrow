@@ -53,8 +53,8 @@ const Navbar = () => {
       )}
       {userId && (
           <div className="ml-96">
-            <Link href='profile' className="regular-16 text-blue-100 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold">
-              Profile
+            <Link href='/dashboard' className="regular-16 text-blue-100 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold">
+              Dashboard
             </Link>
           </div>
         )}
