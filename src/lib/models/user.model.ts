@@ -34,6 +34,11 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Hub',
   }],
+  joinedHubs: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Hub',
+  }],
+  
 });
 
 const User = models?.User || model('User', UserSchema);

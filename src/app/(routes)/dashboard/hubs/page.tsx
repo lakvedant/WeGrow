@@ -1,7 +1,8 @@
 'use client';
-import { HubViewBox } from '@/components/HubViewBox';
+
 import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { DHubViewBox } from './_components/DHubViewBox';
 
 interface Hub {
   _id: string;
@@ -24,7 +25,7 @@ const HubsPage = () => {
   useEffect(() => {
     const fetchHubs = async () => {
       try {
-        const response = await fetch('/api/hubs');
+        const response = await fetch('/api/ownhubs');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -45,7 +46,7 @@ const HubsPage = () => {
 
   return (
     <div className="items-center justify-center">
-      <div className="mx-auto max-w-xl mt-12 mb-12 px-5 relative">
+      <div className="mx-auto max-w-xl pt-12 mb-12 px-5 relative">
         <input
           type="text"
           placeholder="Search hubs..."
@@ -53,12 +54,12 @@ const HubsPage = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <FaSearch className="absolute top-3 left-8 text-gray-400 w-6 h-6" />
+        <FaSearch className="absolute top-[60px] left-8 text-gray-400 w-6 h-6" />
       </div>
       <div className='flex justify-center pb-10 px-10'>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 ">
             {filteredHubs.map((hub) => (
-              <HubViewBox key={hub._id} hub={hub} />
+              <DHubViewBox key={hub._id} hub={hub} />
             ))}
         </div>
       </div>
