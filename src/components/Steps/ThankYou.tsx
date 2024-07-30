@@ -22,7 +22,7 @@ export default function ThankYou({}: Props) {
         support@wegrow.com
       </p>
       <Link
-      href='/'>Home</Link>
+      href='/hubs'>Hubs</Link>
     </div>
   );
 }

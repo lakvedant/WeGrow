@@ -1,20 +1,34 @@
-// pages/api/hubs.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuth } from '@clerk/nextjs/server';
-import Hub from '@/lib/models/hub.model'; // Assuming you have a Hub model defined
+import User from '@/lib/models/user.model'; // Assuming you have a User model defined
+import { connect } from '@/lib/db';
+
+
 
 export async function GET(request: NextRequest) {
+  
   try {
+    await connect();
     const { userId } = getAuth(request);
+    const userid = await User.findOne({ clerkId: userId });
 
-    if (!userId) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    // Find user by ID and populate the ownedHubs field
+    const user = await User.findById(userid).populate('ownedHubs');
+    console.log('user:', user); // Log user for debugging
+
+    if (!user) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    const hubs = await Hub.find({ HubOwner: userId });
+    // Extract hub IDs from the user's document
+    const hubs = user.ownedHubs;
+
     return NextResponse.json({ hubs });
-  } catch (error) {
-    console.error("Error fetching hubs: ", error);
+  } catch (error: any) {
+    // Log the detailed error for debugging
+    console.error("Error fetching hubs: ", error.message, error.stack);
+
     return NextResponse.json({ error: 'Failed to fetch hubs' }, { status: 500 });
   }
 }

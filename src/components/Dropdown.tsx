@@ -199,15 +199,15 @@ const Products = () => {
           </a>
         </div>
         <div>
-          <h3 className="mb-2 text-sm font-semibold">Scaleup</h3>
-          <a href="#" className="mb-1 block text-sm text-neutral-800">
-            Live Coaching
+          <h3 className="mb-2 text-sm font-semibold">Indices</h3>
+          <a href="/market/indices/nifty50" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            Nifty 50
           </a>
-          <a href="#" className="mb-1 block text-sm text-neutral-800">
-            Reviews
+          <a href="/market/indices/spx500" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            SPX 500
           </a>
-          <a href="#" className="block text-sm text-neutral-800">
-            Tax/VAT
+          <a href="/market/indices/sensex" target="_blank" className="block text-sm text-neutral-800  hover:text-blue-50">
+            SenSex
           </a>
         </div>
         <div>

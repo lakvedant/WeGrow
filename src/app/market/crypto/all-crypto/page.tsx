@@ -6,7 +6,7 @@ const page = () => {
   return (
     <div>
         <CryptoCurrencyMarket colorTheme="light" width="100%" height={640}></CryptoCurrencyMarket>
-        <TechnicalAnalysis colorTheme="light"  height={640} symbol='BTCUSD'></TechnicalAnalysis>
+        {/* <TechnicalAnalysis colorTheme="light"  height={640} symbol='BTCUSD'></TechnicalAnalysis> */}
     </div>
   )
 }
