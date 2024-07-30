@@ -4,6 +4,8 @@ import React from 'react'
 import { useUser} from '@clerk/nextjs'
 import CardInfo from './_components/CardInfo';
 
+
+
 function Dashboard() {
     const { user } = useUser();
     interface Hub {
@@ -21,6 +23,8 @@ function Dashboard() {
         { amount: 6000, risk: 4, avgReturn: 8.5 },
         { amount: 12000, risk: 2, avgReturn: 6.7 },
       ];
+
+      const [loading, setLoading] = useState<boolean>(true);
   return (
     <div className='p-10'>
         <h2 className="font-bold text-4xl">Hi, {user?.fullName} 👋</h2>

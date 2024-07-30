@@ -1,31 +1,18 @@
-// Preloader.tsx
+// components/Preloader.tsx
 import React from 'react';
+import { Player } from '@lottiefiles/react-lottie-player'
 
 const Preloader: React.FC = () => {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="loader"></div>
-      <style jsx>{`
-        .loader {
-          border: 16px solid #f3f3f3;
-          border-radius: 50%;
-          border-top: 16px solid #3498db;
-          width: 120px;
-          height: 120px;
-          -webkit-animation: spin 2s linear infinite;
-          animation: spin 2s linear infinite;
-        }
-
-        @-webkit-keyframes spin {
-          0% { -webkit-transform: rotate(0deg); }
-          100% { -webkit-transform: rotate(360deg); }
-        }
-
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
+      <Player
+        src='https://lottie.host/4d113c66-ae4d-458d-8b9c-3494bc8449b3/DCAHhA1Ide.json'
+        className="w-80 h-80 z-100 "
+        loop
+        autoplay
+        speed={0.5}
+/>
     </div>
   );
 };
