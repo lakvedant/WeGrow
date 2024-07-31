@@ -3,7 +3,7 @@ import { UserProfile } from '@clerk/nextjs';
 const ProfilePage = () => {
   return (
     <>
-    <div className='px-10'><UserProfile /></div>
+    <div className='p-10'><UserProfile /></div>
       
     </>
   );

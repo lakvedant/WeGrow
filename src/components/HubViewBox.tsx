@@ -45,7 +45,7 @@ export function HubViewBox({ hub }: HubProps) {
       <p className="px-7 mt-14">{hub.hubDescription}</p>
       <h2 className="pl-9 absolute bottom-[74px] font-bold text-primary text-2xl inline-block"> ₹{formatIndianNumber(hub.m_invest)}</h2>
       <div className="flex items-center mt-2 ml-9 absolute bottom-[78px] right-6">
-        <Image src={hub.HubOwner.photo} height={20} width={20} alt='Hub Owner' className="rounded-full" />
+        <Image src={hub.HubOwner.photo || '/user-black.svg'} height={20} width={20} alt='Hub Owner' className="rounded-full" />
         <p className="ml-2 text-neutral-500 text-base">{hub.HubOwner.firstName} {hub.HubOwner.lastName}</p>
       </div>
       <CardFooter className="flex justify-center items-center pb-0.5 absolute bottom-4 ml-3">

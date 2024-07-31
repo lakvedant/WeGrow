@@ -40,6 +40,10 @@ const HubsPage = () => {
     fetchHubs();
   }, []);
 
+  const handleDeleteHub = (id: string) => {
+    setHubs(hubs.filter(hub => hub._id !== id));
+  };
+
   const filteredHubs = hubs.filter(hub =>
     hub.hubName.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -58,9 +62,9 @@ const HubsPage = () => {
       </div>
       <div className='flex justify-center pb-10 px-10'>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 ">
-            {filteredHubs.map((hub) => (
-              <DHubViewBox key={hub._id} hub={hub} />
-            ))}
+          {filteredHubs.map((hub) => (
+            <DHubViewBox key={hub._id} hub={hub} onDelete={handleDeleteHub} />
+          ))}
         </div>
       </div>
     </div>
