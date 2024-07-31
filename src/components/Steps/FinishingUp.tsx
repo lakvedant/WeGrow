@@ -51,57 +51,52 @@ export default function FinishingUp({
             <div className="flex flex-col gap-6">
               <section className="bg-magnolia rounded-lg p-5 flex flex-col gap-4">
                 <div className="flex justify-between">
-                  <div className="flex flex-col items-start">
-                    <h3 className="font-semibold text-marine-blue">
+                  <div className="flex items-start ">
+                    <h3 className="font-semibold text-marine-blue mr-24">
                       Hub Name
                     </h3>
                     <p>{formData.hubName}</p>
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex flex-col items-start">
-                    <h3 className="font-semibold text-marine-blue">
+                  <div className="flex  items-start">
+                    <h3 className="font-semibold text-marine-blue mr-14">
                       Hub Description
                     </h3>
                     <p>{formData.hubDescription}</p>
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex flex-col items-start">
-                    <h3 className="font-semibold text-marine-blue">
+                  <div className="flex  items-start">
+                    <h3 className="font-semibold text-marine-blue mr-[43px]">
                       Number of People
                     </h3>
                     <p>{formData.people}</p>
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex flex-col items-start">
-                    <h3 className="font-semibold text-marine-blue">
+                  <div className="flex  items-start">
+                    <h3 className="font-semibold text-marine-blue mr-8">
                       Monthly Investment
                     </h3>
                     <p>{formData.m_invest}</p>
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex flex-col items-start">
-                    <h3 className="font-semibold text-marine-blue">
+                  <div className="flex  items-start">
+                    <h3 className="font-semibold text-marine-blue mr-[44px]">
                       Investment Period
                     </h3>
                     <p>{formData.invest_period}</p>
                   </div>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex flex-col items-start">
-                    <h3 className="font-semibold text-marine-blue">
+                  <div className="flex  items-start">
+                    <h3 className="font-semibold text-marine-blue mr-14">
                       Investment Type
                     </h3>
                     <p className="capitalize">{investPlan.Type}</p>
-                    <button
-                      onClick={() => setActiveStep(3)}
-                      className="text-gray-400 text-sm underline hover:opacity-80"
-                    >
-                      Change
-                    </button>
+
                   </div>
                 </div>
               </section>
