@@ -5,10 +5,11 @@ import Hub from '@/lib/models/hub.model';
 import User from '@/lib/models/user.model';
 
 // Connect to the database
-connect();
+
 
 export async function POST(request: NextRequest) {
   try {
+    connect();
     const hubData = await request.json();
     console.log('Received data:', hubData); // Log received data for debugging
 
@@ -43,6 +44,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
+    connect();
     const hubs = await Hub.find().populate('HubOwner', 'firstName lastName photo');
     // console.log(hubs)
     return NextResponse.json({ hubs });
