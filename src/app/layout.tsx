@@ -6,7 +6,6 @@ import Navbar from "@/components/Navbar";
 import  {ClerkProvider} from '@clerk/nextjs'
 import { dark, neobrutalism, shadesOfPurple } from "@clerk/themes";
 import { Toaster } from "@/components/ui/toaster"
-import Footer from "@/components/Footer";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -40,7 +39,6 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Toaster />
-          <Footer />
         </body>
       </html>
     </ClerkProvider>
