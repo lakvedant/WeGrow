@@ -3,6 +3,12 @@ import { HubViewBox } from '@/components/HubViewBox';
 import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
+interface HubOwner {
+  firstName: string;
+  lastName: string;
+  photo: string;
+}
+
 interface Hub {
   _id: string;
   hubName: string;
@@ -11,13 +17,13 @@ interface Hub {
   m_invest: number;
   invest_period: number;
   Type: string;
-  HubOwner: string;
+  HubOwner: HubOwner;
   AvgReturn?: number;
   Risk?: number;
   imgurl?: string;
 }
 
-const HubsPage = () => {
+const HubsPage: React.FC = () => {
   const [hubs, setHubs] = useState<Hub[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -57,9 +63,9 @@ const HubsPage = () => {
       </div>
       <div className='flex justify-center pb-10 px-10'>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14 ">
-            {filteredHubs.map((hub) => (
-              <HubViewBox key={hub._id} hub={hub} />
-            ))}
+          {filteredHubs.map((hub) => (
+            <HubViewBox key={hub._id} hub={hub} />
+          ))}
         </div>
       </div>
     </div>

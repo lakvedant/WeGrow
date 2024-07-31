@@ -3,12 +3,17 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from "@/components/ui/use-toast"
-
 function formatIndianNumber(num: number): string {
   return num.toLocaleString('en-IN');
 }
+
+interface HubOwner {
+  firstName: string;
+  lastName: string;
+  photo: string;
+}
+
 interface HubProps {
   hub: {
     _id: string;
@@ -18,7 +23,7 @@ interface HubProps {
     m_invest: number;
     invest_period: number;
     Type: string;
-    HubOwner: string;
+    HubOwner: HubOwner;
     AvgReturn?: number;
     Risk?: number;
     imgurl?: string;
@@ -38,22 +43,26 @@ export function HubViewBox({ hub }: HubProps) {
         </div>
       </CardHeader>
       <p className="px-7 mt-14">{hub.hubDescription}</p>
-      <h2 className="pl-9 absolute bottom-[74px] font-bold text-primary text-2xl"> ₹{formatIndianNumber(hub.m_invest)}</h2>
+      <h2 className="pl-9 absolute bottom-[74px] font-bold text-primary text-2xl inline-block"> ₹{formatIndianNumber(hub.m_invest)}</h2>
+      <div className="flex items-center mt-2 ml-9 absolute bottom-[78px] right-6">
+        <Image src={hub.HubOwner.photo} height={20} width={20} alt='Hub Owner' className="rounded-full" />
+        <p className="ml-2 text-neutral-500 text-base">{hub.HubOwner.firstName} {hub.HubOwner.lastName}</p>
+      </div>
       <CardFooter className="flex justify-center items-center pb-0.5 absolute bottom-4 ml-3">
         <div className="">
           <Button asChild>
             <Link href={`/hub/${hub._id}`} className="bg-blue-50 text-blue-100 mr-16 text-semibold">Know More</Link>
           </Button>
           <Button
-      onClick={() => {
-        toast({
-          description: "You have joined the hub 🎉.",
-        })
-      }}
-      className="bg-blue-50 text-blue-100 ml-10 text-semibold"
-    >
-      Join Hub
-    </Button>
+            onClick={() => {
+              toast({
+                description: "You have joined the hub 🎉.",
+              })
+            }}
+            className="bg-blue-50 text-blue-100 ml-10 text-semibold"
+          >
+            Join Hub
+          </Button>
         </div>
       </CardFooter>
     </Card>

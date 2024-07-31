@@ -1,6 +1,7 @@
+// pages/api/hubs.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { connect } from '@/lib/db'; // Adjust path if necessary
-import Hub from "@/lib/models/hub.model";
+import { connect } from '@/lib/db';
+import Hub from '@/lib/models/hub.model';
 import User from '@/lib/models/user.model';
 
 // Connect to the database
@@ -42,8 +43,8 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    connect();
-    const hubs = await Hub.find();
+    const hubs = await Hub.find().populate('HubOwner', 'firstName lastName photo');
+    // console.log(hubs)
     return NextResponse.json({ hubs });
   } catch (error) {
     console.error("Error fetching hubs: ", error);
