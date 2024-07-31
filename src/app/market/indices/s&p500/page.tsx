@@ -19,7 +19,7 @@ const TradingViewWidget: React.FC = () => {
     script.innerHTML = `
       {
         "autosize": true,
-        "symbol": "SPX500",
+        "symbol": "SPX",
         "interval": "D",
         "timezone": "Etc/UTC",
         "theme": "light",

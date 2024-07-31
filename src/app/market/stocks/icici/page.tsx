@@ -19,7 +19,7 @@ const TradingViewWidget: React.FC = () => {
     script.innerHTML = `
       {
         "autosize": true,
-        "symbol": "NSE%3ANIFTY",
+        "symbol": "ICICIBANK",
         "interval": "D",
         "timezone": "Etc/UTC",
         "theme": "light",

@@ -200,30 +200,37 @@ const Products = () => {
         </div>
         <div>
           <h3 className="mb-2 text-sm font-semibold">Indices</h3>
-          <a href="/market/indices/nifty50" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
-            Nifty 50
+          <a href="/market/indices/dow-jones" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            Dow Jones 30
           </a>
-          <a href="/market/indices/spx500" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
-            SPX 500
+          <a href="/market/indices/s&p500" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            S&P 500
           </a>
           <a href="/market/indices/sensex" target="_blank" className="block text-sm text-neutral-800  hover:text-blue-50">
             SenSex
           </a>
         </div>
         <div>
-          <h3 className="mb-2 text-sm font-semibold">Enterprise</h3>
-          <a href="#" className="mb-1 block text-sm text-neutral-800">
-            White glove
+          <h3 className="mb-2 text-sm font-semibold">Stocks</h3>
+          <a href="/market/stocks/hdfc" target="_blank" className="mb-1 block text-sm text-neutral-800 hover:text-blue-50">
+            HDFC Bank
           </a>
-          <a href="#" className="mb-1 block text-sm text-neutral-800">
-            SOX Compliance
+          <a href="/market/stocks/rel" target="_blank" className="mb-1 block text-sm text-neutral-800 hover:text-blue-50">
+            Reliance
           </a>
-          <a href="#" className="block text-sm text-neutral-800">
-            Staffing
+          <a href="/market/stocks/tcs" target="_blank" className="block text-sm text-neutral-800 hover:text-blue-50">
+            TCS
           </a>
-          <a href="#" className="block text-sm text-neutral-800">
-            More
+          <a href="/market/stocks/tata" target="_blank" className="block text-sm text-neutral-800 hover:text-blue-50">
+            Tata Motors
           </a>
+          <a href="/market/stocks/icici" target="_blank" className="block text-sm text-neutral-800 hover:text-blue-50">
+            ICICI Bank
+          </a>
+          <a href="/market/stocks/all-stock" target="_blank" className="block text-sm text-neutral-800 hover:text-blue-50 hover:underline">
+            View All
+          </a>
+
         </div>
       </div>
     </div>

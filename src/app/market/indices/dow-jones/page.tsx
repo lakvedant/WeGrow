@@ -19,7 +19,7 @@ const TradingViewWidget: React.FC = () => {
     script.innerHTML = `
       {
         "autosize": true,
-        "symbol": "SENSEX",
+        "symbol": "US30",
         "interval": "D",
         "timezone": "Etc/UTC",
         "theme": "light",
