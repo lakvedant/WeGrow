@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     const newHub = new Hub({
       ...hubData,
       HubOwner: user._id,
-      HubMembers: user._id,
+      HubMembers: [user._id],
       currpeople: 1
     });
 

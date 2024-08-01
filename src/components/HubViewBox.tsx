@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -59,7 +58,7 @@ export function HubViewBox({ hub }: HubProps) {
 
     try {
       const response = await fetch(`/api/hubs/${hub._id}/join`, {
-        method: 'PATCH',
+        method: 'POST',  // Use POST method
         headers: {
           'Content-Type': 'application/json',
         },

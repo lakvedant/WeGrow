@@ -122,7 +122,7 @@ const CardInfo: React.FC<CardInfoProps> = ({ HubsList }) => {
               <div>
                 <h2 className="text-sm">Risk Factor</h2>
                 <h2 className="font-bold text-2xl">
-                  {formatNumber(Risk)}%
+                  {(Risk).toFixed(2)}%
                 </h2>
               </div>
               <CircleDollarSign className="bg-blue-20 p-3 h-12 w-12 rounded-full text-white" />
