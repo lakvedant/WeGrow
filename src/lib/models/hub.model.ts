@@ -34,6 +34,11 @@ const HubSchema = new Schema({
     ref: 'User', // Reference to the User model
     required: true,
   },
+  HubMembers: {
+    type: Schema.Types.ObjectId, // Changed to ObjectId
+    ref: 'User', // Reference to the User model
+    required: true,
+  },
   AvgReturn: {
     type: Number,
   },
