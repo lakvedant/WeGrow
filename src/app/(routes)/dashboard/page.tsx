@@ -14,11 +14,13 @@ function Dashboard() {
         amount: number;
         risk: number;
         avgReturn: number;
+        Type: string;
       }
       interface HubData {
         AvgReturn: number;
         Risk: number;
         m_invest: number;
+        Type: string;
       }
 
       useEffect(() => {
@@ -26,26 +28,30 @@ function Dashboard() {
           try {
             const response = await fetch('/api/gethubdata');
             if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
+              throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
+            console.log('API response:', data); // Log full API response
+      
             setHubs(data.hubs);
-            console.log(hubs)
-            // const transformedData = data.hubs.map((hubs: any) => ({
-            //   amount: hubs.m_invest,
-            //   risk: hubs.Risk,
-            //   avgReturn: hubs.AvgReturn
-            // }));
-            // setList(transformedData);
-            // // console.log(list)
-
+      
+            const transformedData = data.hubs.map((hub: any) => ({
+              amount: hub.m_invest,
+              risk: hub.Risk,
+              avgReturn: hub.AvgReturn,
+              Type:hub.Type
+            }));
+            console.log('Transformed data:', transformedData); // Log transformed data
+            setList(transformedData);
+      
           } catch (error) {
             console.error("Error fetching hubs: ", error);
           }
         };
-    
+      
         fetchHubs();
       }, []);
+      
   return (
     <div className='p-10'>
         <h2 className="font-bold text-4xl">Hi, {user?.fullName} 👋</h2>

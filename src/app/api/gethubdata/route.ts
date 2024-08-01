@@ -1,20 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAuth } from '@clerk/nextjs/server';
 import User from '@/lib/models/user.model'; // Assuming you have a User model defined
+import Hub from '@/lib/models/hub.model'; // Assuming you have a Hub model defined
 import { connect } from '@/lib/db';
 
-
-
 export async function GET(request: NextRequest) {
-  
   try {
     await connect();
     const { userId } = getAuth(request);
-    const userid = await User.findOne({ clerkId: userId });
 
-
-    // Find user by ID and populate the ownedHubs field
-    const user = await User.findById(userid).populate('joinedHubs');
+    // Find the user by Clerk ID
+    const user = await User.findOne({ clerkId: userId }).populate('joinedHubs');
     console.log('user:', user); // Log user for debugging
 
     if (!user) {
@@ -22,8 +18,11 @@ export async function GET(request: NextRequest) {
     }
 
     // Extract hub IDs from the user's document
-    const hubs = user.ownedHubs;
+    const hubIds = user.joinedHubs;
 
+    // Fetch details for each hub ID
+    const hubs = await Hub.find({ _id: { $in: hubIds } });
+    
     return NextResponse.json({ hubs });
   } catch (error: any) {
     // Log the detailed error for debugging
