@@ -140,8 +140,7 @@ function Stats() {
               <Pie
                 data={list}
                 dataKey="Number"
-                labelLine={false}
-                fill={(entry: PieChartData) => entry.fill} // Ensure this fill is correctly used
+                labelLine={false}// Ensure this fill is correctly used
                 label={({ payload, ...props }) => (
                   <text
                     cx={props.cx}
