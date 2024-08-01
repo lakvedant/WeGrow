@@ -18,6 +18,18 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 
+const colorMap: { [key: string]: string } = {
+  'Forex': '#007BFF',
+  'Crypto': '#0056b3',
+  'MutualFunds': '#003d80',
+  'Stocks': '#004085',
+  'Gold': '#0056a0',
+  'RealEstate': '#0069d9',
+  'FixedDeposit': '#004085',
+  'Bonds': '#003366',
+  'Startups': '#003d79',
+};
+
 const chartConfig = {
   Forex: {
     label: 'Forex',
@@ -64,12 +76,12 @@ interface HubData {
 interface PieChartData {
   Type: string;
   Number: number;
+  fill: string;
 }
 
 function Stats() {
   const { user } = useUser();
-  const [hubs, setHubs] = useState<HubData[]>([]);
-  const [pieData, setPieData] = useState<PieChartData[]>([]);
+  const [list, setList] = useState<PieChartData[]>([]);
 
   useEffect(() => {
     const fetchHubs = async () => {
@@ -79,23 +91,30 @@ function Stats() {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        console.log('API response:', data); // Log full API response
+        console.log('API response:', data);
 
-        // Aggregate the number of hubs for each type
-        const typeCounts = data.hubs.reduce((acc: Record<string, number>, hub: HubData) => {
-          acc[hub.Type] = (acc[hub.Type] || 0) + 1;
-          return acc;
-        }, {});
+        // Count the number of hubs for each type
+        const typeCount: { [key: string]: number } = {};
+        data.hubs.forEach((hub: HubData) => {
+          if (typeCount[hub.Type]) {
+            typeCount[hub.Type]++;
+          } else {
+            typeCount[hub.Type] = 1;
+          }
+        });
 
-        // Transform aggregated data into the format required by PieChart
-        const transformedData: PieChartData[] = Object.entries(typeCounts).map(([Type, Number]) => ({
-          Type,
-          Number: Number as number, // Explicitly cast to number
+        // Map the types to the color map and create the final list
+        const transformedData: PieChartData[] = Object.entries(typeCount).map(([type, count]) => ({
+          Type: type,
+          Number: count,
+          fill: colorMap[type] || '#000000' // Default to black if type not found
         }));
-        console.log('Transformed data:', transformedData); // Log transformed data
-        setPieData(transformedData);
+
+        setList(transformedData);
+        console.log('Transformed data:', transformedData);
+
       } catch (error) {
-        console.error('Error fetching hubs: ', error);
+        console.error("Error fetching hubs: ", error);
       }
     };
 
@@ -107,7 +126,7 @@ function Stats() {
       <Card className="flex flex-col">
         <CardHeader className="items-center pb-0">
           <CardTitle>Pie Chart - Hub Types</CardTitle>
-          <CardDescription>Distribution of Hub Types</CardDescription>
+          <CardDescription>Hub types distribution</CardDescription>
         </CardHeader>
         <CardContent className="flex-1 pb-0">
           <ChartContainer
@@ -119,22 +138,23 @@ function Stats() {
                 content={<ChartTooltipContent nameKey="Type" hideLabel />}
               />
               <Pie
-                data={pieData}
+                data={list}
                 dataKey="Number"
                 labelLine={false}
-                label={({ payload, ...props }) => {
-                  return (
-                    <text
-                      x={props.x}
-                      y={props.y}
-                      textAnchor={props.textAnchor}
-                      dominantBaseline={props.dominantBaseline}
-                      fill="hsla(var(--foreground))"
-                    >
-                      {`${chartConfig[payload.Type as keyof typeof chartConfig]?.label || payload.Type} (${payload.Number})`}
-                    </text>
-                  );
-                }}
+                fill={(entry: PieChartData) => entry.fill} // Ensure this fill is correctly used
+                label={({ payload, ...props }) => (
+                  <text
+                    cx={props.cx}
+                    cy={props.cy}
+                    x={props.x}
+                    y={props.y}
+                    textAnchor={props.textAnchor}
+                    dominantBaseline={props.dominantBaseline}
+                    fill="hsla(var(--foreground))"
+                  >
+                    {`${payload.Type} (${payload.Number})`}
+                  </text>
+                )}
                 nameKey="Type"
               />
             </PieChart>
@@ -145,7 +165,7 @@ function Stats() {
             Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
           </div>
           <div className="leading-none text-muted-foreground">
-            Showing the distribution of different hub types
+            Showing distribution of hub types
           </div>
         </CardFooter>
       </Card>
