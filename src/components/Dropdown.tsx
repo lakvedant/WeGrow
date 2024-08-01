@@ -178,7 +178,7 @@ const Nub = ({ selected }: { selected: number | null }) => {
 
 const Products = () => {
   return (
-    <div>
+    <div >
       <div className="flex gap-4">
         <div>
           <h3 className="mb-2 text-sm font-semibold">Crypto Currency</h3>
@@ -230,7 +230,21 @@ const Products = () => {
           <a href="/market/stocks/all-stock" target="_blank" className="block text-sm text-neutral-800 hover:text-blue-50 hover:underline">
             View All
           </a>
-
+        </div>
+        <div>
+          <h3 className="mb-2 text-sm font-semibold">Forex</h3>
+          <a href="/market/forex/euro-usd" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            EURO/USD
+          </a>
+          <a href="/market/forex/gbp-usd" target="_blank" className="mb-1 block text-sm text-neutral-800  hover:text-blue-50">
+            POUND/USD
+          </a>
+          <a href="/market/forex/usd-inr" target="_blank" className="block text-sm text-neutral-800  hover:text-blue-50">
+            USD/INR
+          </a>
+          <a href="/market/forex/usd-yen" target="_blank" className="block text-sm text-neutral-800  hover:text-blue-50">
+            USD/YEN
+          </a>
         </div>
       </div>
     </div>

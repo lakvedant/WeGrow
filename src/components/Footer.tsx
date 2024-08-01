@@ -27,10 +27,10 @@ const Footer = () => {
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-4">
-                                <a href="https://github.com/lakvedant/WeGrow" className="hover:underline ">Github</a>
+                                <a href="https://github.com/lakvedant/WeGrow" target="_blank" className="hover:underline ">Github</a>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">Discord</a>
+                                <a href="https://www.instagram.com/wegrow.app?igsh=Z2FvZGdyYjNpbG14" target="_blank" className="hover:underline">Instagram</a>
                             </li>
                         </ul>
                     </div>
@@ -41,7 +41,7 @@ const Footer = () => {
                                 <a href="#" className="hover:underline">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="#" className="hover:underline">Terms &amp; Conditions</a>
+                                <a href="#" className="hover:underline">Terms & Conditions</a>
                             </li>
                         </ul>
                     </div>
@@ -52,11 +52,18 @@ const Footer = () => {
                 <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="#" className="hover:underline">WeGrow™</a>. All Rights Reserved.
                 </span>
                 <div className="flex mt-4 sm:justify-center sm:mt-0">
-                    <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-                        <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
-                                <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
-                            </svg>
-                        <span className="sr-only">Facebook page</span>
+                    <a href="https://www.instagram.com/wegrow.app?igsh=Z2FvZGdyYjNpbG14" target="_blank" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                        <span className="[&>svg]:h-4 [&>svg]:w-4">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 448 512">
+                            {/* <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. --> */}
+                            <path
+                            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+                        </svg>
+                        </span>
+                        <span className="sr-only">Instagram Page</span>
                     </a>
                     <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                         <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
@@ -70,7 +77,7 @@ const Footer = () => {
                         </svg>
                         <span className="sr-only">Twitter page</span>
                     </a>
-                    <a href="https://github.com/lakvedant/WeGrow" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
+                    <a href="https://github.com/lakvedant/WeGrow" target="_blank" className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5">
                         <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"/>
                         </svg>

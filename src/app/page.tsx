@@ -6,6 +6,7 @@ import PhoneFeautre from "@/components/PhoneFeautre";
 import Preloader from "@/components/PreLoader";
 import TickNumbers from "@/components/TickNumbers";
 import Footer from "@/components/Footer";
+import H3_p2 from "@/components/H3_p2";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -28,6 +29,7 @@ export default function Home() {
       <Hero />
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <PhoneFeautre />
+      <H3_p2 />
       <Faq />
       <Footer />
     </>
