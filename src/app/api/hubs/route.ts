@@ -33,6 +33,7 @@ export async function POST(request: NextRequest) {
 
     // Update the user's ownedHubs field
     user.ownedHubs.push(newHub._id);
+    user.joinedHubs.push(newHub._id)
     await user.save();
 
     return NextResponse.json({ success: true, data: savedHub }, { status: 201 });

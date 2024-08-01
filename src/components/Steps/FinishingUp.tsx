@@ -42,14 +42,14 @@ export default function FinishingUp({
       {confirm ? (
         <ThankYou />
       ) : (
-        <div className="flex justify-start flex-col gap-10 h-full md:w-[400px]">
+        <div className="flex justify-start flex-col gap-5 h-full md:w-[400px]">
           <ContentSection
             title="Finishing up"
             para="Double-check everything looks OK before confirming."
           />
           <div className="h-full flex flex-col justify-between">
-            <div className="flex flex-col gap-6">
-              <section className="bg-magnolia rounded-lg p-5 flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
+              <section className="bg-magnolia rounded-lg p-5 flex flex-col gap-3">
                 <div className="flex justify-between">
                   <div className="flex items-start ">
                     <h3 className="font-semibold text-marine-blue mr-24">
