@@ -13,6 +13,10 @@ const HubSchema = new Schema({
     type: Number,
     required: true,
   },
+  currpeople: {
+    type: Number,
+    required: true,
+  },
   m_invest: {
     type: Number,
     required: true,

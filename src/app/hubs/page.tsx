@@ -14,6 +14,7 @@ interface Hub {
   hubName: string;
   hubDescription: string;
   people: number;
+  currpeople: number;
   m_invest: number;
   invest_period: number;
   Type: string;
