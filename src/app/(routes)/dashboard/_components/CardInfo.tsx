@@ -34,21 +34,21 @@ const CardInfo: React.FC<CardInfoProps> = ({ HubsList }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [HubsList]);
 
-  // useEffect(() => {
-  //   if (Investment > 0) {
-  //     const fetchFinancialAdvice = async () => {
-  //       const advice = await getFinancialAdvice({
-  //         Investment,
-  //         Profit,
-  //         Risk,
-  //       });
-  //       setFinancialAdvice(advice);
-  //       // animateText(advice);
-  //     };
+  useEffect(() => {
+    if (Investment > 0) {
+      const fetchFinancialAdvice = async () => {
+        const advice = await getFinancialAdvice({
+          Investment,
+          Profit,
+          Risk,
+        });
+        setFinancialAdvice(advice);
+        // animateText(advice);
+      };
 
-  //     fetchFinancialAdvice();
-  //   }
-  // }, [Investment, Profit, Risk]);
+      fetchFinancialAdvice();
+    }
+  }, [Investment, Profit, Risk]);
 
 // //   const animateText = (text: string) => {
 //     let index = 0;

@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
+// import { Risk } from "@/components/Risk"
 import {
   Card,
   CardContent,
@@ -21,10 +22,15 @@ import {
 
 export function HubView() {
   return (
-    <Card className="w-[92.5%] ml-14 mt-10 px-4">
-      <CardHeader>
-        <CardTitle className="text-5xl">Hub Name</CardTitle>
+    <Card className="w-[92.5%] ml-14 mt-10 px-4 relative">
+      <CardHeader className="inline-block">
+        <div className="inline-block">
+        <CardTitle className="text-5xl ">Hub Name</CardTitle>
         <CardDescription className="text-xl  mt-2 text-neutral-800">Description</CardDescription>
+        </div>
+        <div className="inline-block right-9 top-0 absolute">
+          {/* <Risk percent={45.7} ></Risk> */}
+        </div>
       </CardHeader>
       <CardContent>
         <form>

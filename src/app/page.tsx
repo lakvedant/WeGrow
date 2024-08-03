@@ -7,6 +7,7 @@ import Preloader from "@/components/PreLoader";
 import TickNumbers from "@/components/TickNumbers";
 import Footer from "@/components/Footer";
 import H3_p2 from "@/components/H3_p2";
+import ContactUs from "@/components/ContactUs";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -30,6 +31,9 @@ export default function Home() {
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <PhoneFeautre />
       <H3_p2 />
+      <div className='flex items-center justify-center w-full bg-blue-50 py-14'>
+      <ContactUs></ContactUs>
+    </div>
       <Faq />
       <Footer />
     </>

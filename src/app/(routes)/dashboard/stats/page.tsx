@@ -123,10 +123,10 @@ function Stats() {
 
   return (
     <div>
-      <Card className="flex flex-col">
+      <Card className="w-44">
         <CardHeader className="items-center pb-0">
-          <CardTitle>Pie Chart - Hub Types</CardTitle>
-          <CardDescription>Hub types distribution</CardDescription>
+          <CardTitle>Hub Types</CardTitle>
+          <CardDescription>Diverse investment Stats</CardDescription>
         </CardHeader>
         <CardContent className="flex-1 pb-0">
           <ChartContainer
