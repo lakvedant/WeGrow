@@ -25,7 +25,8 @@ export function HubView() {
     <Card className="w-[92.5%] ml-14 mt-10 px-4 relative">
       <CardHeader className="inline-block">
         <div className="inline-block">
-        <CardTitle className="text-5xl ">Hub Name</CardTitle>
+        <CardTitle ><span className="text-4xl bg-blue-400 rounded-xl">Hub Name</span></CardTitle>
+        <p>Hub leader : dgarsga</p>
         <CardDescription className="text-xl  mt-2 text-neutral-800">Description</CardDescription>
         </div>
         <div className="inline-block right-9 top-0 absolute">
