@@ -112,7 +112,7 @@ body {
     @apply  bg-blue-50 px-8 py-4 text-blue-100 transition-all hover:bg-blue-20 hover:text-blue-100
   }
   .btn_dark_blue { 
-    @apply  bg-blue-100 px-8 py-4 text-white transition-all text-xl
+    @apply  bg-blue-100 px-8 py-4 text-white transition-all text-lg
   }
   .worksButton { 
     @apply  bg-blue-50 px-8 py-4 text-black transition-all hover:bg-blue-20 hover:text-blue-100 w-80 h-24 text-2xl 
@@ -299,4 +299,30 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.slide-up {
+  opacity: 1;
+  transform: translateY(10px);
+  transition: opacity .25s ease-in, transform .4s ease-in;
+}
+
+.sectionSubtitle {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 2px;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  color: var(--gripLuminousDark);
+}
+
+.sectionTitle {
+  font-family: Inter;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 54px;
+  letter-spacing: -.02em;
+  margin: 0 0 20px;
+  color: var(--gripLuminousDark);
 }

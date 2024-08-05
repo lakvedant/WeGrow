@@ -28,13 +28,13 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      <PhoneFeautre />
-      <H3_p2 />
+      {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <PhoneFeautre /> */}
+      {/* <H3_p2 />
       <div className='flex items-center justify-center w-full bg-blue-50 py-14'>
       <ContactUs></ContactUs>
-    </div>
-      <Faq />
+      </div>
+      <Faq /> */}
       <Footer />
     </>
   );

@@ -10,14 +10,15 @@ const Hero = () => {
             </div>
             <div className="bgimg2 bg-cover absolute left-0 bottom-0 h-[315px] w-[400px]">
             </div>
-            <Image
-            src="/mobilehome.png"
-            alt="Group"
-            width={400}
-            height={400}
-            className="hidden max-sm:flexCenter max-sm:mt-12 max-sm:ml-5"
-            />
-            <div className="mt-16 ml-32 max-sm:ml-8 max-sm:mt-20">
+                <Image
+
+                src="/mobilehome.png"
+                alt="Group"
+                width={320}
+                height={320}
+                className="hidden max-sm:flexCenter max-sm:mt-6 max-sm:ml-14 "
+                />
+            <div className="mt-16 ml-32 max-sm:ml-8 max-sm:mt-5">
                 <h1 className="text-7xl font-bold max-sm:text-4xl">Start Investing your </h1>
                 <h1 className="text-7xl font-bold max-sm:text-4xl">Money with your</h1>
                 <h1 ><WordRotate
@@ -26,7 +27,7 @@ const Hero = () => {
                     duration={2000}
                 /></h1>
             </div>
-            <div className="ml-32 mt-8 max-sm:ml-8">
+            <div className="ml-32 mt-8 max-sm:ml-8 max-sm:mt-3">
                 <Link href='/sign-up'>
                     <Button 
                     type="button"
