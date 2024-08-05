@@ -11,7 +11,6 @@ export async function GET(request: NextRequest) {
 
     // Find the user by Clerk ID
     const user = await User.findOne({ clerkId: userId }).populate('joinedHubs');
-    console.log('user:', user); // Log user for debugging
 
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
