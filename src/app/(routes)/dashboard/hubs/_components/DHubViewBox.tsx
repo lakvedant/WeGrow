@@ -96,7 +96,7 @@ export function DHubViewBox({ hub, onDelete }: HubProps) {
         <SheetTrigger asChild>
           <Pencil className='w-7 h-7 inline-block cursor-pointer' />
           </SheetTrigger>
-      <SheetContent>
+      <SheetContent className='bg-black text-white'>
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>
@@ -108,18 +108,18 @@ export function DHubViewBox({ hub, onDelete }: HubProps) {
             <Label htmlFor="name" className="text-right">
               Name
             </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+            <Input id="name" value="Pedro Duarte" className="col-span-3 text-black" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
               Username
             </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
+            <Input id="username" value="@peduarte" className="col-span-3 text-black" />
           </div>
         </div>
         <SheetFooter>
           <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit" className='border-white'>Save changes</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>
@@ -128,7 +128,7 @@ export function DHubViewBox({ hub, onDelete }: HubProps) {
             <AlertDialogTrigger asChild>
               <Trash2 className='w-7 h-7 inline-block cursor-pointer' />
             </AlertDialogTrigger>
-            <AlertDialogContent >
+            <AlertDialogContent className='bg-gray-950 text-white ' >
               <AlertDialogHeader >
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                 <AlertDialogDescription>

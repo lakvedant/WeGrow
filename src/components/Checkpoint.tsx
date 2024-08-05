@@ -10,7 +10,7 @@ const Checkpoint = () => {
         loop
         autoplay
         speed={0.5}
-/> <p className=' w-96 absolute left-24 text-lg font-semibold top-[40.5px] text-gray-700'> Collaborative Investing through Hubs</p>
+/> <p className=' w-96 absolute left-24 text-lg  font-semibold top-[40.5px] text-gray-700'> Collaborative Investing through Hubs</p>
 <Player
         src='https://lottie.host/72c43010-3efc-4146-adf0-ba51d65df1a8/SdEdhgECIS.json'
         className="w-28 h-28 z-1  absolute top-[55px]"

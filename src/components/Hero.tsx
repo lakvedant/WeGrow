@@ -6,7 +6,7 @@ import Image from "next/image";
 const Hero = () => {
     return(
         <>
-            <div className="bgimg1 bg-cover absolute right-0 h-[635px] w-[900px]">
+            <div className="bgimg1 bg-cover absolute right-0 bottom-0 h-[635px] w-[900px]">
             </div>
             <div className="bgimg2 bg-cover absolute left-0 bottom-0 h-[315px] w-[400px]">
             </div>
