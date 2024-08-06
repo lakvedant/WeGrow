@@ -4,7 +4,6 @@ import Faq from "@/components/FAQs";
 import Hero from "@/components/Hero";
 import PhoneFeautre from "@/components/PhoneFeautre";
 import Preloader from "@/components/PreLoader";
-import TickNumbers from "@/components/TickNumbers";
 import Footer from "@/components/Footer";
 import H3_p2 from "@/components/H3_p2";
 import ContactUs from "@/components/ContactUs";
