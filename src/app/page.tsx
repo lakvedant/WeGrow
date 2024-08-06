@@ -31,12 +31,12 @@ export default function Home() {
       <Hero />
       {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> */}
       <HeroScrollDemo></HeroScrollDemo>
-      {/* <PhoneFeautre /> */}
+      <PhoneFeautre />
       <H3_p2 />
-      {/* <div className='flex items-center justify-center w-full bg-blue-50 py-14'>
+      <div className='flex items-center justify-center w-full bg-blue-50 py-14'>
       <ContactUs></ContactUs>
       </div>
-      <Faq /> */}
+      <Faq />
       <Footer />
     </>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+
 import {
   Card,
   CardContent,
@@ -35,7 +36,7 @@ export const HubView: React.FC<HubViewProps> = ({ hubData }) => {
         <CardHeader className="inline-block">
           <div className="inline-block">
             <CardTitle>
-              <span className="text-4xl bg-blue-400 rounded-xl">
+              <span className="text-4xl">
                 {hubData.hubName}
               </span>
             </CardTitle>
@@ -44,14 +45,13 @@ export const HubView: React.FC<HubViewProps> = ({ hubData }) => {
               {hubData.hubDescription}
             </CardDescription>
           </div>
+          <div className="inline-block">
+              
+          </div>
         </CardHeader>
         <CardContent>
           <MemberTable members={hubData.hubMembers} monthlyInvestment={hubData.m_invest} />
         </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline">Cancel</Button>
-          <Button>Deploy</Button>
-        </CardFooter>
       </Card>
     </div>
   );

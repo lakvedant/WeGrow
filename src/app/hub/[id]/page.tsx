@@ -1,35 +1,38 @@
-// import React from 'react';
-// import { HubView } from '@/components/HubView';
+// app/hub/[id]/page.tsx
+'use client'
+import React, { useEffect, useState } from 'react';
+import HubView from '@/components/HubView'; // Adjust the path accordingly
+import Preloader from '@/components/PreLoader';
 
-// interface HubPageProps {
-//   params: {
-//     id: string;
-//   };
-// }
+const HubPage: React.FC<{ params: { id: string } }> = ({ params }) => {
+  const [hubData, setHubData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-// const fetchHubData = async (id: string) => {
-//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-//   if (!baseUrl) {
-//     throw new Error('NEXT_PUBLIC_BASE_URL is not defined');
-//   }
+  useEffect(() => {
+    const fetchHubData = async () => {
+      try {
+        const response = await fetch(`/api/hubs/${params.id}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch hub data');
+        }
+        const data = await response.json();
+        setHubData(data);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-//   const res = await fetch(`${baseUrl}/api/hub/${id}`, {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
+    fetchHubData();
+  }, [params.id]);
 
-//   if (!res.ok) {
-//     throw new Error('Failed to fetch hub data');
-//   }
+  if (loading) return <div><Preloader /></div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!hubData) return <div>No hub data found</div>;
 
-//   return res.json();
-// };
+  return <HubView hubData={hubData} />;
+};
 
-// const HubPage: React.FC<HubPageProps> = async ({ params }) => {
-//   const hubData = await fetchHubData(params.id);
-//   return <HubView hubData={hubData} />;
-// };
-
-// export default HubPage;
+export default HubPage;

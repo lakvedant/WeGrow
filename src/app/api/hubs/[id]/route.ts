@@ -1,11 +1,11 @@
+// app/api/hub/[id]/route.ts
 import { connect } from '@/lib/db';
 import Hub from '@/lib/models/hub.model';
 import User from '@/lib/models/user.model';
-import { NextRequest, NextResponse } from 'next/server';
 import { investType } from '@/constants'; // Adjust the path accordingly
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
-export async function DELETE(req: NextRequest) {
+export async function DELETE(req: Request) {
   await connect();
 
   const url = new URL(req.url);
@@ -47,10 +47,60 @@ export async function DELETE(req: NextRequest) {
   }
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: Request) {
   await connect();
 
-  const { id } = params;
+  const url = new URL(req.url);
+  const id = url.pathname.split('/').pop();
+
+  if (!id) {
+    return NextResponse.json({ error: 'Hub ID is required' }, { status: 400 });
+  }
+
+  try {
+    const hub = await Hub.findById(id)
+      .populate('HubMembers', 'firstName lastName photo status') // Populate HubMembers with fields from User model
+      .exec();
+
+    if (!hub) {
+      return NextResponse.json({ error: 'Hub not found' }, { status: 404 });
+    }
+
+    const hubMembers = hub.HubMembers.map((member: any) => ({
+      _id: member._id.toString(),
+      name: `${member.firstName} ${member.lastName}`, // Full name
+      image: member.photo, // User photo
+      status: member.status, // Member status
+    }));
+
+    // Determine the owner and regular members
+    const [owner, ...members] = hubMembers;
+
+    const hubData = {
+      hubName: hub.hubName,
+      hubDescription: hub.hubDescription,
+      hubMembers: [{ ...owner, status: 'Owner' }, ...members.map((member: any) => ({ ...member, status: 'Member' }))],
+      m_invest: hub.m_invest,
+    };
+
+    console.log(hubData);
+    return NextResponse.json(hubData, { status: 200 });
+  } catch (error) {
+    console.error('Error fetching hub:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+export async function PUT(req: Request) {
+  await connect();
+
+  const url = new URL(req.url);
+  const id = url.pathname.split('/').pop();
+
+  if (!id) {
+    return NextResponse.json({ error: 'Hub ID is required' }, { status: 400 });
+  }
+
   const data = await req.json(); // Get the request body
 
   try {
@@ -83,37 +133,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
     return NextResponse.json({ success: true, data: updatedHub });
   } catch (error: any) {
+    console.error('Error updating hub:', error);
     return NextResponse.json({ success: false, message: error.message }, { status: 400 });
   }
 }
-
-
-// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-//   const { id } = req.query;
-
-//   await connect();
-
-//   try {
-//     const hub = await Hub.findById(id).populate('HubOwner').populate('HubMembers');
-//     if (!hub) {
-//       return res.status(404).json({ message: 'Hub not found' });
-//     }
-
-//     const members = hub.HubMembers.map((member: any, index: number) => ({
-//       _id: member._id,
-//       name: member.name,
-//       image: member.image,
-//       status: index === 0 ? 'Owner' : 'Member',
-//     }));
-
-//     res.status(200).json({
-//       hubName: hub.hubName,
-//       hubDescription: hub.hubDescription,
-//       hubMembers: members,
-//       m_invest: hub.m_invest,
-//     });
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// }
-

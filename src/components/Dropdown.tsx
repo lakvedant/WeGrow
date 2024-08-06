@@ -213,7 +213,7 @@ const Products = () => {
         <div>
           <h3 className="mb-2 text-sm font-semibold">Stocks</h3>
           <a href="/market/stocks/hdfc" target="_blank" className="mb-1 block text-sm text-neutral-800 hover:text-blue-50">
-            HDFC Bank
+            HDFC 
           </a>
           <a href="/market/stocks/rel" target="_blank" className="mb-1 block text-sm text-neutral-800 hover:text-blue-50">
             Reliance
@@ -225,7 +225,7 @@ const Products = () => {
             Tata Motors
           </a>
           <a href="/market/stocks/icici" target="_blank" className="block text-sm text-neutral-800 hover:text-blue-50">
-            ICICI Bank
+            ICICI 
           </a>
           <a href="/market/stocks/all-stock" target="_blank" className="block text-sm text-neutral-800 hover:text-blue-50 hover:underline">
             View All
