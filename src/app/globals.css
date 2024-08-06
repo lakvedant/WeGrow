@@ -273,25 +273,25 @@ body {
 .image-pop-up {
   opacity: 0;
   transform: scale(0.5);
-  animation: popUp 8s ease infinite;
+  animation: popUp 5s ease infinite;
   animation-fill-mode: forwards;
 
 }
 
 .animation-delay-1 {
-  animation-delay: 0.8s;
+  animation-delay: 0.5s;
 }
 
 .animation-delay-2 {
-  animation-delay: 1.6s;
+  animation-delay: 1s;
 }
 
 .animation-delay-3 {
-  animation-delay: 2.4s;
+  animation-delay: 1.5s;
 }
 
 @keyframes popUp {
-  0%, 20%, 80%, 100% {
+    0%, 100% {
     opacity: 0;
     transform: scale(0.5);
   }
@@ -325,4 +325,56 @@ body {
   letter-spacing: -.02em;
   margin: 0 0 20px;
   color: var(--gripLuminousDark);
+}
+
+
+.vertical-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  margin: 20px 0;
+}
+
+.step.visible {
+  opacity: 1;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: darkblue;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .vertical-steps {
+    align-items: flex-start;
+  }
+
+  .step {
+    flex-direction: row;
+  }
+
+  .circle {
+    margin-right: 20px;
+  }
 }

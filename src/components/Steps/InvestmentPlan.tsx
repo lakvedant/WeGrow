@@ -79,7 +79,7 @@ const InvestmentPlan: React.FC<Step2Props> = ({ onBack, onNext }) => {
               htmlFor="invest_period"
               className="block mb-2 text-sm font-normal text-gray-900"
             >
-              Investment Period
+              Investment Period in Years
             </label>
             <input
               {...register("invest_period", { required: true })}

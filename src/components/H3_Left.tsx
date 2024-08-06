@@ -15,7 +15,7 @@ const H3_Left = () => {
         Investments made so far on  <br className="hidden md:block" />WeGrow
       </p>
       {inView && (
-        <p className="text-blue-500 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold">
+        <p className="text-blue-50 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold">
           <CountUp end={2000000} />+
         </p>
       )}

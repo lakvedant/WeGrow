@@ -2,23 +2,19 @@
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
+import VerticalSteps from "./VerticalSteps";
 
 export function HeroScrollDemo() {
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div className="flex overflow-hidden justify-start">
       <ContainerScroll
         titleComponent={
           <>
-            <h1 className="text-4xl font-semibold text-black">
-              Unleash the power of <br />
-              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Scroll Animations
-              </span>
-            </h1>
             <br /><br />
           </>
         }
       >
+      
         <Image
           src={`/dashboard.png`}
           alt="hero"
@@ -28,6 +24,9 @@ export function HeroScrollDemo() {
           draggable={false}
         />
       </ContainerScroll>
+      <div className=" flex items-center">
+      <VerticalSteps />
+      </div>
     </div>
   );
 }

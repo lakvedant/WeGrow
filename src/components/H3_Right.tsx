@@ -15,7 +15,7 @@ const H3_Right = () => {
         <section>
           {inView && (
             <>
-              <p className="text-4xl sm:text-5xl md:text-6xl text-blue-500 font-bold">
+              <p className="text-4xl sm:text-5xl md:text-6xl text-blue-50 font-bold">
                 <CountUp end={6000} start={1} />+
               </p>
               <p className="text-sm max-sm:text-xs md:text-lg font-light pt-2">
@@ -29,7 +29,7 @@ const H3_Right = () => {
         <section>
           {inView && (
             <>
-              <p className="text-4xl sm:text-5xl md:text-6xl text-blue-500 font-bold">
+              <p className="text-4xl sm:text-5xl md:text-6xl text-blue-50 font-bold">
                 <CountUp end={9} start={1} />
               </p>
               <p className="text-sm max-sm:text-xs md:text-lg font-light">
