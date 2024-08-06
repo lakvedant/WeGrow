@@ -3,6 +3,7 @@ import Hub from '@/lib/models/hub.model';
 import User from '@/lib/models/user.model';
 import { NextRequest, NextResponse } from 'next/server';
 import { investType } from '@/constants'; // Adjust the path accordingly
+import { NextApiRequest, NextApiResponse } from 'next';
 
 export async function DELETE(req: NextRequest) {
   await connect();
@@ -85,3 +86,34 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     return NextResponse.json({ success: false, message: error.message }, { status: 400 });
   }
 }
+
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { id } = req.query;
+
+  await connect();
+
+  try {
+    const hub = await Hub.findById(id).populate('HubOwner').populate('HubMembers');
+    if (!hub) {
+      return res.status(404).json({ message: 'Hub not found' });
+    }
+
+    const members = hub.HubMembers.map((member: any, index: number) => ({
+      _id: member._id,
+      name: member.name,
+      image: member.image,
+      status: index === 0 ? 'Owner' : 'Member',
+    }));
+
+    res.status(200).json({
+      hubName: hub.hubName,
+      hubDescription: hub.hubDescription,
+      hubMembers: members,
+      m_invest: hub.m_invest,
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error' });
+  }
+}
+

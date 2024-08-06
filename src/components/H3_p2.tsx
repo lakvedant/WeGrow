@@ -5,7 +5,7 @@ import Left from './H3_Left'
 const H3_p2 = () => {
   return (
     <div className='flex justify-center mb-10'>
-      <section className='p-8'>
+      <section className='p-8 max-sm:pr-2'>
         <Left />
       </section>
       <Right />

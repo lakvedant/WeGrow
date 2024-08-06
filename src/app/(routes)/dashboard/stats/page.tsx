@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/nextjs';
-import { TrendingUp } from 'lucide-react';
-import { Pie, PieChart } from 'recharts';
+import PieChart from '@/components/PieChart';
+import BarChart from '@/components/Barchart';  // Import your BarChart component
 import {
   Card,
   CardContent,
@@ -11,165 +11,99 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart';
 
-const colorMap: { [key: string]: string } = {
-  'Forex': '#007BFF',
-  'Crypto': '#0056b3',
-  'MutualFunds': '#003d80',
-  'Stocks': '#004085',
-  'Gold': '#0056a0',
-  'RealEstate': '#0069d9',
-  'FixedDeposit': '#004085',
-  'Bonds': '#003366',
-  'Startups': '#003d79',
-};
-
-const chartConfig = {
-  Forex: {
-    label: 'Forex',
-    color: 'hsl(var(--chart-1))',
-  },
-  Crypto: {
-    label: 'Crypto',
-    color: 'hsl(var(--chart-2))',
-  },
-  MutualFunds: {
-    label: 'Mutual Funds',
-    color: 'hsl(var(--chart-3))',
-  },
-  Stocks: {
-    label: 'Stocks',
-    color: 'hsl(var(--chart-4))',
-  },
-  Gold: {
-    label: 'Gold',
-    color: 'hsl(var(--chart-5))',
-  },
-  RealEstate: {
-    label: 'Real Estate',
-    color: 'hsl(var(--chart-6))',
-  },
-  FixedDeposit: {
-    label: 'Fixed Deposit',
-    color: 'hsl(var(--chart-7))',
-  },
-  Bonds: {
-    label: 'Bonds',
-    color: 'hsl(var(--chart-8))',
-  },
-  Startups: {
-    label: 'Startups',
-    color: 'hsl(var(--chart-9))',
-  },
-} satisfies ChartConfig;
+interface InvestmentTypeCount {
+  Type: string;
+  Number: number;
+}
 
 interface HubData {
   Type: string;
+  AmountInvested: number; // Add this field to hold the amount invested
 }
 
-interface PieChartData {
-  Type: string;
-  Number: number;
-  fill: string;
-}
-
-function Stats() {
+const ParentComponent: React.FC = () => {
   const { user } = useUser();
-  const [list, setList] = useState<PieChartData[]>([]);
+  const [pieChartData, setPieChartData] = useState<InvestmentTypeCount[]>([]);
+  const [barChartData, setBarChartData] = useState<{ types: string[], amounts: number[] }>({ types: [], amounts: [] });
 
   useEffect(() => {
-    const fetchHubs = async () => {
+    const fetchUserJoinedHubs = async () => {
       try {
-        const response = await fetch('/api/gethubdata');
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log('API response:', data);
-
-        // Count the number of hubs for each type
-        const typeCount: { [key: string]: number } = {};
-        data.hubs.forEach((hub: HubData) => {
-          if (typeCount[hub.Type]) {
-            typeCount[hub.Type]++;
-          } else {
-            typeCount[hub.Type] = 1;
+        if (user) {
+          const response = await fetch(`/api/gethubdata`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
           }
-        });
+          const data = await response.json();
 
-        // Map the types to the color map and create the final list
-        const transformedData: PieChartData[] = Object.entries(typeCount).map(([type, count]) => ({
-          Type: type,
-          Number: count,
-          fill: colorMap[type] || '#000000' // Default to black if type not found
-        }));
+          // Count the number of hubs for each type
+          const typeCount: { [key: string]: number } = {};
+          const typeInvestment: { [key: string]: number } = {};
 
-        setList(transformedData);
-        console.log('Transformed data:', transformedData);
+          data.hubs.forEach((hub: HubData) => {
+            // Count the number of hubs for each type
+            typeCount[hub.Type] = (typeCount[hub.Type] || 0) + 1;
+            
+            // Accumulate total amount invested for each type
+            typeInvestment[hub.Type] = (typeInvestment[hub.Type] || 0) + hub.AmountInvested;
+          });
 
+          // Convert the counts to the format expected by the PieChart component
+          const pieFormattedData: InvestmentTypeCount[] = Object.entries(typeCount).map(([type, count]) => ({
+            Type: type,
+            Number: count,
+          }));
+
+          setPieChartData(pieFormattedData);
+
+          // Prepare data for the BarChart component
+          const barFormattedData = {
+            types: Object.keys(typeInvestment),
+            amounts: Object.values(typeInvestment),
+          };
+
+          setBarChartData(barFormattedData);
+        }
       } catch (error) {
-        console.error("Error fetching hubs: ", error);
+        console.error('Error fetching user joined hubs:', error);
       }
     };
 
-    fetchHubs();
-  }, []);
+    fetchUserJoinedHubs();
+  }, [user]);
+
+  // Prepare labels and series for the PieChart component
+  const pieLabels = pieChartData.map(item => item.Type);
+  const pieSeries = pieChartData.map(item => item.Number);
+
+  // Prepare labels and series for the BarChart component
+  const barLabels = barChartData.types;
+  const barSeries = barChartData.amounts;
 
   return (
-    <div>
-      <Card className="w-44">
-        <CardHeader className="items-center pb-0">
-          <CardTitle>Hub Types</CardTitle>
-          <CardDescription>Diverse investment Stats</CardDescription>
+    <div className='p-10'>
+      <Card className='mb-10'>
+        <CardHeader>
+          <CardTitle>Hub Types Distribution</CardTitle>
+          <CardDescription>Visual representation of hub types and their distribution</CardDescription>
         </CardHeader>
-        <CardContent className="flex-1 pb-0">
-          <ChartContainer
-            config={chartConfig}
-            className="mx-auto aspect-square max-h-[250px]"
-          >
-            <PieChart>
-              <ChartTooltip
-                content={<ChartTooltipContent nameKey="Type" hideLabel />}
-              />
-              <Pie
-                data={list}
-                dataKey="Number"
-                labelLine={false}// Ensure this fill is correctly used
-                label={({ payload, ...props }) => (
-                  <text
-                    cx={props.cx}
-                    cy={props.cy}
-                    x={props.x}
-                    y={props.y}
-                    textAnchor={props.textAnchor}
-                    dominantBaseline={props.dominantBaseline}
-                    fill="hsla(var(--foreground))"
-                  >
-                    {`${payload.Type} (${payload.Number})`}
-                  </text>
-                )}
-                nameKey="Type"
-              />
-            </PieChart>
-          </ChartContainer>
+        <CardContent>
+          <PieChart labels={pieLabels} series={pieSeries} />
         </CardContent>
-        <CardFooter className="flex-col gap-2 text-sm">
-          <div className="flex items-center gap-2 font-medium leading-none">
-            Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-          </div>
-          <div className="leading-none text-muted-foreground">
-            Showing distribution of hub types
-          </div>
-        </CardFooter>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Total Investment by Hub Type</CardTitle>
+          <CardDescription>Visual representation of the total amount invested in each hub type</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <BarChart types={barLabels} amounts={barSeries} />
+        </CardContent>
       </Card>
     </div>
   );
-}
+};
 
-export default Stats;
+export default ParentComponent;

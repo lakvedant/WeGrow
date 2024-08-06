@@ -1,13 +1,13 @@
-import { HubView } from '@/components/HubView'
-import { MemberCount } from '@/components/MemberCount'
-import React from 'react'
+// import { HubView } from '@/components/HubView'
+// import { MemberCount } from '@/components/MemberCount'
+// import React from 'react'
 
-const page = () => {
-  return (
-    <div>
-      <HubView></HubView>
-    </div>
-  )
-}
+// const page = () => {
+//   return (
+//     <div>
+//       <HubView></HubView>
+//     </div>
+//   )
+// }
 
-export default page
+// export default page

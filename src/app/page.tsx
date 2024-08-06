@@ -8,6 +8,7 @@ import TickNumbers from "@/components/TickNumbers";
 import Footer from "@/components/Footer";
 import H3_p2 from "@/components/H3_p2";
 import ContactUs from "@/components/ContactUs";
+import { HeroScrollDemo } from "@/components/Dashboard";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -28,10 +29,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      <PhoneFeautre /> */}
-      {/* <H3_p2 />
-      <div className='flex items-center justify-center w-full bg-blue-50 py-14'>
+      {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> */}
+      <HeroScrollDemo></HeroScrollDemo>
+      {/* <PhoneFeautre /> */}
+      <H3_p2 />
+      {/* <div className='flex items-center justify-center w-full bg-blue-50 py-14'>
       <ContactUs></ContactUs>
       </div>
       <Faq /> */}
