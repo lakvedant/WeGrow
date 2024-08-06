@@ -25,7 +25,6 @@ interface HubData {
 const ParentComponent: React.FC = () => {
   const { user } = useUser();
   const [pieChartData, setPieChartData] = useState<InvestmentTypeCount[]>([]);
-  const [barChartData, setBarChartData] = useState<{ types: string[], amounts: number[] }>({ types: [], amounts: [] });
 
   useEffect(() => {
     const fetchUserJoinedHubs = async () => {
@@ -57,13 +56,6 @@ const ParentComponent: React.FC = () => {
 
           setPieChartData(pieFormattedData);
 
-          // Prepare data for the BarChart component
-          const barFormattedData = {
-            types: Object.keys(typeInvestment),
-            amounts: Object.values(typeInvestment),
-          };
-
-          setBarChartData(barFormattedData);
         }
       } catch (error) {
         console.error('Error fetching user joined hubs:', error);
