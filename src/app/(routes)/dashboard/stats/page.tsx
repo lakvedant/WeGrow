@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/nextjs';
 import PieChart from '@/components/PieChart';
-import BarChart from '@/components/Barchart';  // Import your BarChart component
 import {
   Card,
   CardContent,
