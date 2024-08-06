@@ -77,10 +77,6 @@ const ParentComponent: React.FC = () => {
   const pieLabels = pieChartData.map(item => item.Type);
   const pieSeries = pieChartData.map(item => item.Number);
 
-  // Prepare labels and series for the BarChart component
-  const barLabels = barChartData.types;
-  const barSeries = barChartData.amounts;
-
   return (
     <div className='p-10'>
       <Card className='mb-10'>
@@ -93,15 +89,7 @@ const ParentComponent: React.FC = () => {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Total Investment by Hub Type</CardTitle>
-          <CardDescription>Visual representation of the total amount invested in each hub type</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <BarChart types={barLabels} amounts={barSeries} />
-        </CardContent>
-      </Card>
+      
     </div>
   );
 };
