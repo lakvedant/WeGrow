@@ -88,32 +88,32 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 }
 
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { id } = req.query;
+// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+//   const { id } = req.query;
 
-  await connect();
+//   await connect();
 
-  try {
-    const hub = await Hub.findById(id).populate('HubOwner').populate('HubMembers');
-    if (!hub) {
-      return res.status(404).json({ message: 'Hub not found' });
-    }
+//   try {
+//     const hub = await Hub.findById(id).populate('HubOwner').populate('HubMembers');
+//     if (!hub) {
+//       return res.status(404).json({ message: 'Hub not found' });
+//     }
 
-    const members = hub.HubMembers.map((member: any, index: number) => ({
-      _id: member._id,
-      name: member.name,
-      image: member.image,
-      status: index === 0 ? 'Owner' : 'Member',
-    }));
+//     const members = hub.HubMembers.map((member: any, index: number) => ({
+//       _id: member._id,
+//       name: member.name,
+//       image: member.image,
+//       status: index === 0 ? 'Owner' : 'Member',
+//     }));
 
-    res.status(200).json({
-      hubName: hub.hubName,
-      hubDescription: hub.hubDescription,
-      hubMembers: members,
-      m_invest: hub.m_invest,
-    });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error' });
-  }
-}
+//     res.status(200).json({
+//       hubName: hub.hubName,
+//       hubDescription: hub.hubDescription,
+//       hubMembers: members,
+//       m_invest: hub.m_invest,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// }
 
