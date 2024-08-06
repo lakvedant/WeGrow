@@ -12,7 +12,7 @@ const H3_Left = () => {
   return (
     <div ref={ref} className=" max-sm:pr-0 max-sm:pl-0">
       <p className="text-2xl max-sm:text-xl md:text-4xl lg:text-5xl font-bold pb-4">
-        Team across the globe run on <br className="hidden md:block" /> Atlassian
+        Total Hubs made so far on<br className="hidden md:block" /> WeGrow
       </p>
       {inView && (
         <p className="text-blue-500 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold">
