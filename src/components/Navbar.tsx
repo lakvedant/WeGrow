@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 import React from 'react';
 import { NAV_LINKS } from '../constants';
 import Image from 'next/image';
@@ -27,10 +26,30 @@ const Navbar: React.FC = () => {
           <ShiftingDropDown />
         </div>
       </ul>
+
       <MobileMenu userId={userId} />
-      <div className="ml-auto hidden lg:flex">
-        <UserButton afterSignOutUrl="/" />
-      </div>
+
+      {!userId && (
+        <div className="absolute right-10 lg:flexCenter hidden">
+          <Link href="/sign-in">
+            <Button 
+              type="button"
+              title="Login"
+              icon="/user-black.svg"
+              variant="btn_light_blue"
+            />
+          </Link>
+        </div>
+      )}
+
+      {userId && (
+        <div className="ml-auto hidden lg:flex items-center">
+          <Link href="/dashboard" className="mr-4 regular-16 text-blue-100 cursor-pointer pb-1.5 transition-all hover:font-bold">
+            Dashboard
+          </Link>
+          <UserButton afterSignOutUrl="/" />
+        </div>
+      )}
     </nav>
   );
 };

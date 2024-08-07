@@ -60,14 +60,14 @@ const VerticalSteps: React.FC = () => {
           }}
         >
           <div
-            className={`w-10 h-10 rounded-full bg-gray-500 text-gray-400 flex items-center justify-center mr-5 font-bold transition-colors duration-500 ${
-              visibleSteps[index] ? 'bg-blue-50 text-white' : ''
+            className={`bg-blue-50 text-white w-10 h-10 rounded-full  flex items-center justify-center mr-5 font-bold transition-colors duration-500 ${
+              visibleSteps[index] ? '' : ''
             }`}
           >
             {index + 1}
           </div>
           <div
-            className={`text-lg text-gray-400 transition-colors duration-500 ${
+            className={`text-lg'text-black transition-colors duration-500 ${
               visibleSteps[index] ? 'text-black' : ''
             }`}
           >
@@ -75,7 +75,7 @@ const VerticalSteps: React.FC = () => {
           </div>
           {index < steps.length - 1 && (
             <div
-              className={`absolute top-full left-[5.5%] w-px h-20 bg-gray-400 transition-colors duration-500 ${
+              className={`absolute top-full left-[5.5%] w-px h-20 bg-blue-50 transition-colors duration-500 ${
                 visibleSteps[index] ? 'bg-blue-50' : ''
               }`}
               style={{ transform: 'translateX(-50%)' }}
