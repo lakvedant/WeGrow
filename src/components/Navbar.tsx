@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
       <Link href="/" className="relative left-0 sm:pl-4">
         <Image src="/logo-black.png" alt="logo" width={274} height={74} />
       </Link>
-      <ul className="hidden h-full gap-14 lg:flex top-1.5 relative left-32">
+      <ul className="hidden h-full gap-14 lg:flex top-1.5 relative left-32 lg:mr-[450px]">
         {NAV_LINKS.map((link) => (
           <Link href={link.href} key={link.key} className="regular-16 text-blue-100 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold">
             {link.label}
