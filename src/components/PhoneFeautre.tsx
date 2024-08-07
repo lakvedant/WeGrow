@@ -18,9 +18,9 @@ const PhoneFeautre = () => {
       alt="phone"
       width={500}
       height={800}
-      className='ml-28 moveUpDown'
+      className='ml-28 moveUpDown max-sm:-ml-2 max-sm:mt-36 '
       />
-      <div className='ml-28 mt-16 relative'>
+      <div className='ml-28 mt-16 relative max-sm:hidden'>
           <div className='pl-10'>
             <GradualSpacing
               className="text-left font-display text-4xl max-sm:text-xl font-bold tracking-[-0.1em]  text-blue-50 dark:text-blue-50 md:text-7xl md:leading-[5rem]"

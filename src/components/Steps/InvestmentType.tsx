@@ -26,14 +26,14 @@ const SelectPlan: React.FC<Step3Props> = ({ onBack, onNext }) => {
   };
 
   return (
-    <main className="flex gap-6 flex-col h-full ">
+    <main className="flex flex-col gap-6 h-full p-4 md:p-6">
       <ContentSection
         title="Select Types of Investments"
         para="You have different options of Investments."
       />
       <div className="h-full flex flex-col justify-between">
         <section className="flex flex-col gap-6">
-          <div className="flex flex-col md:flex-row gap-5 flex-wrap">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {investType.map((d, i) => (
               <Plan
                 title={d.Type}
@@ -72,7 +72,7 @@ const Plan: React.FC<PlanProps> = ({ imageURl, title, investPlan, setInvestPlan,
     <div
       onClick={() => setInvestPlan(data)}
       className={cn(
-        "flex p-2 border md:flex-col rounded-md gap-3 cursor-pointer w-32 h-24 items-center",
+        "flex p-2 border rounded-md gap-3 cursor-pointer items-center md:flex-col w-full md:w-32 h-24",
         {
           "border-purplish-blue bg-magnolia": data.Type === investPlan.Type,
         }
@@ -81,12 +81,12 @@ const Plan: React.FC<PlanProps> = ({ imageURl, title, investPlan, setInvestPlan,
       <Image
         width={100}
         height={100}
-        className="h-10 w-10"
+        className="h-10 w-10 md:h-16 md:w-16"
         src={imageURl}
         alt={title}
       />
       <div className="flex flex-col">
-        <p className="font-semibold capitalize">{title}</p>
+        <p className="font-semibold capitalize text-center">{title}</p>
       </div>
     </div>
   );

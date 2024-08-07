@@ -48,11 +48,11 @@ const VerticalSteps: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col justify-start pt-32 p-5 pl-1 pr-1">
+    <div className="flex flex-col justify-start pt-32 p-5 pl-1 pr-1 max-sm:ml-8">
       {steps.map((text, index) => (
         <div
           key={index}
-          className={`relative flex items-center opacity-0 transition-opacity duration-500 ease-in-out mb-20 transform ${
+          className={`relative flex items-center opacity-0 transition-opacity duration-500 ease-in-out mb-20 max-sm:mb-14 transform ${
             visibleSteps[index] ? 'opacity-100 translate-x-0' : 'translate-x-10'
           }`}
           ref={(el) => {

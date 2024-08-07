@@ -31,28 +31,25 @@ const HubForm = () => {
     setActiveStep(activeStep - 1);
   };
 
+  const handleSubmit = async () => {
+    try {
+      console.log('Submitting data:', formData); // Log data being sent
 
-const handleSubmit = async () => {
-  try {
-    console.log('Submitting data:', formData); // Log data being sent
+      const response = await fetch('/api/hubs', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+      });
 
-    const response = await fetch('/api/hubs', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-    });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      const data = await response.json();
+      console.log('Form submission successful:', data);
+    } catch (error) {
+      console.error('Form submission error:', error);
     }
-
-    const data = await response.json();
-    console.log('Form submission successful:', data);
-  } catch (error) {
-    console.error('Form submission error:', error);
-  }
-};
-
-
+  };
 
   function RenderStep() {
     switch (activeStep) {
@@ -82,13 +79,17 @@ const handleSubmit = async () => {
         className="absolute inset-0"
         quantity={1500}
         ease={80}
-        color='#012169'
+        color="#012169"
         refresh
         size={0.7}
         staticity={20}
       />
       <MobileSidebar activeStep={activeStep} />
-      <main className="bg-slate-50 h-[550px] z-20 w-full max-w-[850px] flex gap-10 p-4 rounded-2xl flex-col md:flex-row drop-shadow">
+      <main
+        className={`bg-slate-50 z-20 w-full max-w-[850px] flex gap-10 p-4 rounded-2xl flex-col md:flex-row drop-shadow ${
+          activeStep === 3 ? 'h-[1300px] md:h-[550px]' : 'h-[550px]'
+        }`}
+      >
         <Sidebar activeStep={activeStep} />
         <div className="pt-10 lg:w-[650px]">
           <RenderStep />

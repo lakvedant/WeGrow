@@ -6,7 +6,7 @@ import VerticalSteps from "./VerticalSteps";
 
 export function HeroScrollDemo() {
   return (
-    <div className="flex overflow-hidden justify-start">
+    <div className="flex overflow-hidden justify-start max-sm:block">
       <ContainerScroll
         titleComponent={
           <>
@@ -24,7 +24,7 @@ export function HeroScrollDemo() {
           draggable={false}
         />
       </ContainerScroll>
-      <div className=" flex items-center">
+      <div className=" flex items-center max-sm:">
       <VerticalSteps />
       </div>
     </div>

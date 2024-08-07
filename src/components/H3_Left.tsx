@@ -10,16 +10,16 @@ const H3_Left = () => {
   });
 
   return (
-    <div ref={ref} className=" max-sm:pr-0 max-sm:pl-0">
-      <p className="text-2xl max-sm:text-xl md:text-4xl lg:text-5xl font-bold pb-4">
-        Investments made so far on  <br className="hidden md:block" />WeGrow
+    <div ref={ref} className="max-sm:pr-0 max-sm:pl-0 p-4 sm:p-0">
+      <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold pb-4">
+        Investments made so far on <br className="hidden md:block" /> WeGrow
       </p>
       {inView && (
-        <p className="text-blue-50 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold">
+        <p className="text-blue-50 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
           <CountUp end={2000000} />+
         </p>
       )}
-      <p className="text-sm sm:text-base md:text-lg lg:text-xl font-light pt-5">
+      <p className="text-xs sm:text-sm md:text-base lg:text-lg font-light pt-5">
         Start your investment journey with WeGrow
       </p>
     </div>
