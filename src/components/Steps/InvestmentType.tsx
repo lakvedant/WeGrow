@@ -81,7 +81,7 @@ const Plan: React.FC<PlanProps> = ({ imageURl, title, investPlan, setInvestPlan,
       <Image
         width={100}
         height={100}
-        className="h-10 w-10 md:h-16 md:w-16"
+        className="h-10 w-10 "
         src={imageURl}
         alt={title}
       />

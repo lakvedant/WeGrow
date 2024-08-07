@@ -1,8 +1,8 @@
-// pages/api/hubs.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { connect } from '@/lib/db';
 import Hub from '@/lib/models/hub.model';
 import User from '@/lib/models/user.model';
+// import { sendHubCreationEmail } from '@/lib/email';
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,11 +28,15 @@ export async function POST(request: NextRequest) {
       ...hubData,
       HubOwner: user._id,
       HubMembers: [user._id],
-      currpeople: 1
+      currpeople: 1,
     });
 
     const savedHub = await newHub.save();
     console.log('Hub saved:', savedHub);
+
+    const fullName = `${user.firstName} ${user.lastName}`;
+    // // Send email to the user upon hub creation
+    // await sendHubCreationEmail(user.email, fullName, newHub.hubName);
 
     // Update the user's ownedHubs and joinedHubs fields
     user.ownedHubs.push(newHub._id);
@@ -49,6 +53,7 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     await connect(); // Ensure the database connection is established
+
     const hubs = await Hub.find().populate('HubOwner', 'firstName lastName photo');
     return NextResponse.json({ hubs });
   } catch (error) {

@@ -86,8 +86,7 @@ const HubForm = () => {
       />
       <MobileSidebar activeStep={activeStep} />
       <main
-        className={`bg-slate-50 z-20 w-full max-w-[850px] flex gap-10 p-4 rounded-2xl flex-col md:flex-row drop-shadow ${
-          activeStep === 3 ? 'h-[1300px] md:h-[550px]' : 'h-[550px]'
+        className={`bg-slate-50 z-20 lg:max-h-[600px] w-full max-w-[850px] flex gap-10 p-4 rounded-2xl flex-col md:flex-row drop-shadow 
         }`}
       >
         <Sidebar activeStep={activeStep} />
