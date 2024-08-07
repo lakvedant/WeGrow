@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/nextjs';
-import PieChart from '@/components/PieChart';
+import dynamic from 'next/dynamic';
 import {
   Card,
   CardContent,
@@ -9,6 +9,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+
+const PieChart = dynamic(() => import('@/components/PieChart'), {
+  ssr: false,
+});
 
 interface InvestmentTypeCount {
   Type: string;
