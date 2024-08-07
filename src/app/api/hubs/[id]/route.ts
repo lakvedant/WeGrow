@@ -81,6 +81,8 @@ export async function GET(req: Request) {
       hubDescription: hub.hubDescription,
       hubMembers: [{ ...owner, status: 'Owner' }, ...members.map((member: any) => ({ ...member, status: 'Member' }))],
       m_invest: hub.m_invest,
+      avgReturn: hub.AvgReturn, 
+      risk: hub.Risk, 
     };
 
     console.log(hubData);
