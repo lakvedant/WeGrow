@@ -20,7 +20,7 @@ const ContactUs = () => {
           <p className='text-neutral-700 py-6 max-sm:text-lg sm:text-2xl sm:w-[500px]'>Feel free to chat with our support team whenever you need more clarity</p>
         </div>
         <div className='justify-start flex max-sm:justify-center'>
-          <Link href="mailto:wegrow@support.com">
+          <Link href="mailto:wegrow.pvt@gmail.com">
             <Button 
               type="button"
               title="Contact Us"
