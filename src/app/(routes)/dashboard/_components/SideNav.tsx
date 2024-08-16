@@ -36,7 +36,7 @@ function SideNav() {
       id: 4,
       name: "Bookmarks",
       icon: Bookmark,
-      path: "/dashboard/bookmarks",
+      path: "/dashboard/bookmark",
     },
     {
       id: 5,
