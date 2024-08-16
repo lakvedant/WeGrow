@@ -7,6 +7,7 @@ import {
   ShieldCheck,
   BarChart2,
   House,
+  Bookmark
 } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
@@ -33,12 +34,18 @@ function SideNav() {
     },
     {
       id: 4,
+      name: "Bookmarks",
+      icon: Bookmark,
+      path: "/dashboard/bookmarks",
+    },
+    {
+      id: 5,
       name: "Edit Profile",
       icon: User,
       path: "/dashboard/edit-profile",
     },
     {
-      id: 4,
+      id: 6,
       name: "Upgrade",
       icon: ShieldCheck,
       path: "/dashboard/upgrade",
