@@ -12,19 +12,21 @@ const Navbar: React.FC = () => {
   const { userId } = auth();
 
   return (
-    <nav className="flexBetween padding-container z-30 py-5 sticky top-0 bg-white px-0 mx-0 focus:border-b-2 border shadow-sm">
+    <nav className="flexBetween z-30 py-5 sticky top-0 bg-white mx-0 focus:border-b-2 border shadow-sm pr-10 pl-5">
       <Link href="/" className="relative left-0 sm:pl-4">
         <Image src="/logo-black.png" alt="logo" width={274} height={74} />
       </Link>
-      <ul className="hidden h-full gap-14 lg:flex top-1.5 relative left-32 lg:mr-[450px]">
+      <ul className="hidden lg:flex items-center gap-16 -ml-10">
         {NAV_LINKS.map((link) => (
-          <Link href={link.href} key={link.key} className="regular-16 text-blue-100 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold">
+          <Link
+            href={link.href}
+            key={link.key}
+            className="text-blue-100 cursor-pointer transition-all hover:font-bold"
+          >
             {link.label}
           </Link>
         ))}
-        <div className="pb-2">
-          <ShiftingDropDown />
-        </div>
+        <ShiftingDropDown />
       </ul>
 
       <MobileMenu userId={userId} />
@@ -43,11 +45,13 @@ const Navbar: React.FC = () => {
       )}
 
       {userId && (
-        <div className="ml-auto hidden lg:flex items-center">
+        <div className="hidden lg:flex items-center">
           <Link href="/dashboard" className="mr-4 regular-16 text-blue-100 cursor-pointer pb-1.5 transition-all hover:font-bold">
             Dashboard
           </Link>
+          <div className='pb-0.5'>
           <UserButton afterSignOutUrl="/" />
+          </div>
         </div>
       )}
     </nav>
