@@ -27,8 +27,8 @@ const Hero = () => {
                     duration={2000}
                 /></h1>
             </div>
-            <div className="ml-32 mt-8 max-sm:ml-8 max-sm:mt-3">
-                <Link href='/sign-up'>
+            <div className="ml-32 mt-8 max-sm:ml-8 max-sm:mt-3 inline-block">
+                <Link href='/sign-up' >
                     <Button 
                     type="button"
                     title="Lets Get Started"

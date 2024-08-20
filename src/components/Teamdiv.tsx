@@ -26,7 +26,7 @@ const Teamdiv = () => {
     <div>
     <div className="pt-12 px-4 sm:px-8 lg:px-20">
     <div className="text-center mb-10">
-      <h1 className="text-4xl font-bold text-blue-500">About Our Company</h1>
+      <h1 className="text-4xl font-bold text-blue-50">About Our Company</h1>
       <p className="mt-4">
         Isn't today's generation all about being digital?<br />
         Are we all not accustomed to the one-click google solution for all our guesses?<br />
@@ -39,7 +39,7 @@ const Teamdiv = () => {
         <div className="lg:w-1/2 p-6 lg:p-10">
           <Card className="w-full lg:w-[500px]">
             <CardHeader>
-              <CardTitle className="text-blue-500">WHO WE ARE</CardTitle>
+              <CardTitle className="text-blue-50">WHO WE ARE</CardTitle>
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
@@ -64,7 +64,7 @@ const Teamdiv = () => {
         <div className="lg:w-1/2 p-6 lg:p-10">
           <Card className="w-full lg:w-[500px]">
             <CardHeader>
-              <CardTitle className="text-blue-500">WHAT WE DO</CardTitle>
+              <CardTitle className="text-blue-50">WHAT WE DO</CardTitle>
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>
@@ -79,7 +79,7 @@ const Teamdiv = () => {
         <div className="lg:w-1/2 p-6 lg:p-10">
           <Card className="w-full lg:w-[500px]">
             <CardHeader>
-              <CardTitle className="text-blue-500">OUR MISSION</CardTitle>
+              <CardTitle className="text-blue-50">OUR MISSION</CardTitle>
               <CardDescription></CardDescription>
             </CardHeader>
             <CardContent>

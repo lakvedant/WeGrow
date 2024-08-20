@@ -6,6 +6,11 @@ const HubSchema = new Schema({
   // ...
 });
 
+const BookmarkSchema = new Schema({
+  symbol: String,
+  name: String,
+});
+
 const UserSchema = new Schema({
   clerkId: {
     type: String,
@@ -38,6 +43,7 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Hub',
   }],
+  bookmarks: [BookmarkSchema]
   
 });
 

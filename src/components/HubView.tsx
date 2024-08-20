@@ -25,6 +25,7 @@ interface HubData {
   m_invest: number;
   avgReturn: number;
   risk: string;
+  type:string;
 }
 
 interface HubViewProps {
@@ -32,6 +33,7 @@ interface HubViewProps {
 }
 
 export const HubView: React.FC<HubViewProps> = ({ hubData }) => {
+  console.log(hubData);
   return (
     <div className="flex justify-center">
       <Card className="w-[55%] mt-10 px-4">
@@ -41,6 +43,7 @@ export const HubView: React.FC<HubViewProps> = ({ hubData }) => {
               <span className="text-4xl">
                 {hubData.hubName}
               </span>
+              <p >Type: {hubData.type}</p> 
             </CardTitle>
             <p className="pt-1">Hub leader: {hubData.hubMembers[0].name}</p>
             <CardDescription className="text-base t-2 text-neutral-800 pt-1">

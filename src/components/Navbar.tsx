@@ -16,15 +16,17 @@ const Navbar: React.FC = () => {
       <Link href="/" className="relative left-0 sm:pl-4">
         <Image src="/logo-black.png" alt="logo" width={274} height={74} />
       </Link>
-      <ul className="hidden lg:flex items-center gap-16 -ml-10">
+
+      <ul className="flex items-center gap-16 justify-center flex-grow">
         {NAV_LINKS.map((link) => (
-          <Link
-            href={link.href}
-            key={link.key}
-            className="text-blue-100 cursor-pointer transition-all hover:font-bold"
-          >
-            {link.label}
-          </Link>
+          <li key={link.key}>
+            <Link
+              href={link.href}
+              className="text-blue-100 cursor-pointer transition-all hover:font-bold"
+            >
+              {link.label}
+            </Link>
+          </li>
         ))}
         <ShiftingDropDown />
       </ul>
@@ -32,7 +34,7 @@ const Navbar: React.FC = () => {
       <MobileMenu userId={userId} />
 
       {!userId && (
-        <div className="absolute right-10 lg:flexCenter hidden">
+        <div className="hidden lg:flexCenter">
           <Link href="/sign-in">
             <Button 
               type="button"
@@ -50,7 +52,7 @@ const Navbar: React.FC = () => {
             Dashboard
           </Link>
           <div className='pb-0.5'>
-          <UserButton afterSignOutUrl="/" />
+            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
       )}
